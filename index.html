@@ -17,6 +17,13 @@
       width: 100%;
     }
 
+    #basemapToggleDiv {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 50;
+    }
+    
     #infoDiv {
       display: none;
       position: fixed;
@@ -79,6 +86,27 @@
       Popup,
       Search
     ) {
+      
+      const info = new OAuthInfo({
+        appId: "vPDycv1jfayS124W",
+        flowType: "auto",
+        popup: false
+      });
+
+      esriId.registerOAuthInfos([info]);
+      
+      //let currentWLID = null;  // Initialize currentPrecinctID
+      
+      //view.when().then(function () {
+        const WLLayer = new FeatureLayer({
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          minScale: 200000000,
+          maxScale: 35000,
+          title: "",
+          outFields: ["*"]
+        });
+
+        map.add(WLLayer);
       
       const api_key = "NTA2ZGIwNWEtMjhmYi00ZTY5LWJhN2QtN2IxZDNmOWMyY2E2"
       const direction = 'Vert'; // Options: 'Vert', 'North', // Note: awaiting fix from esri to support E, W, S
@@ -146,27 +174,6 @@
       });
 
       map.add(nearmap_wt1);
-      
-      //let currentWLID = null;  // Initialize currentPrecinctID
-
-      const info = new OAuthInfo({
-        appId: "vPDycv1jfayS124W",
-        flowType: "auto",
-        popup: false
-      });
-
-      esriId.registerOAuthInfos([info]);
-      
-      //view.when().then(function () {
-        const WLLayer = new FeatureLayer({
-          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
-          minScale: 200000000,
-          maxScale: 35000,
-          title: "",
-          outFields: ["*"]
-        });
-
-        map.add(WLLayer);
 });
   </script>
 </head>
