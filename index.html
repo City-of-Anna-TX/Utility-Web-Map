@@ -265,17 +265,15 @@
           expandIcon: "legend-left",
           view: view,
           content: new Legend({ view: view }),
-          group: "top-left",
           expanded: true
         });
 
-        view.ui.add(legendExpand, "top-left");
+        view.ui.add(legendExpand, "bottom-left");
 
         const layerExpand = new Expand({
           expandIcon: "layers",
           view: view,
           content: new layerList({ view: view }),
-          group: "top-left",
           expanded: true
         });
 
