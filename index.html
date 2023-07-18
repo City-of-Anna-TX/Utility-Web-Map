@@ -34,6 +34,8 @@
 
   <script>
     require([
+      "esri/identity/OAuthInfo",
+      "esri/identity/IdentityManager",
       "esri/WebMap",
       "esri/views/MapView",
       "esri/layers/FeatureLayer",
@@ -46,6 +48,8 @@
       "esri/widgets/Popup",
       "esri/widgets/Search"
     ], function (
+      OAuthInfo,
+      esriId,
       WebMap,
       MapView,
       FeatureLayer,
@@ -58,13 +62,57 @@
       Popup,
       Search
     ) {
-      const clientId = 'vPDycv1jfayS124W';
-      const redirectUri = 'https://city-of-anna-tx.github.io/Utility-Web-Map/';
-      const signInButton = document.getElementById('sign-in');
-      // do this on a button click to avoid popup blockers
-        document.addEventListener('click', function(){
-        window.open('https://www.arcgis.com/sharing/rest/oauth2/authorize?client_id='+clientId+'&response_type=token&expiration=20160&redirect_uri=' + window.encodeURIComponent(redirectUri), 'oauth-window', 'height=400,width=600,menubar=no,location=yes,resizable=yes,scrollbars=yes,status=yes')
+      const info = new OAuthInfo({
+        appId: "vPDycv1jfayS124W",
+        flowType: "auto",
+        popup: false
       });
+
+      esriId.registerOAuthInfos([info]);
+      //const clientId = 'vPDycv1jfayS124W';
+      //const redirectUri = 'https://city-of-anna-tx.github.io/Utility-Web-Map/';
+      //const signInButton = document.getElementById('sign-in');
+      // do this on a button click to avoid popup blockers
+        //document.addEventListener('click', function(){
+        //window.open('https://www.arcgis.com/sharing/rest/oauth2/authorize?client_id='+clientId+'&response_type=token&expiration=20160&redirect_uri=' + window.encodeURIComponent(redirectUri), 'oauth-window', 'height=400,width=600,menubar=no,location=yes,resizable=yes,scrollbars=yes,status=yes')
+        //const App = () => {
+        // state
+        //const [authed, setAuthed] = useState(false);
+        //const [token, setToken] = useState(null);
+        //const [user, setUser] = useState(null);
+
+        // functions
+        //const removeHash = () => {
+          //window.history.pushState('', document.title, window.location.pathname);
+        //};
+
+          //const extractToken = () => {
+            // drop # from string
+            //const hash = qs.parse(window.location.hash.slice(1));
+
+            // extract token and username
+            //if (hash.access_token && hash.username) {
+              //setAuthed(true);
+              //setToken(hash.access_token);
+              //setUser(hash.username);
+            //}
+            // clear hash
+            //if (hash) removeHash();
+          //};
+
+          // lifecycle
+          //useEffect(() => {
+            //extractToken();
+          //}, []);
+
+          // render
+          //if (!authed) {
+            //window.open('https://city-of-anna-tx.github.io/Utility-Web-Map/')
+          //}
+
+          //return token={token}, user={user};
+        //};
+      //});
       const map = new WebMap({
         portalItem: {
           id: "a1a6191761634407a168fe1824d72003"
@@ -88,9 +136,8 @@
        //let currentWLID = null;  // Initialize currentPrecinctID
 
       //view.when().then(function () {
-        // Create the layer for the bubbles
         const WLLayer = new FeatureLayer({
-          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer",
           minScale: 200000000,
           maxScale: 35000,
           title: "",
