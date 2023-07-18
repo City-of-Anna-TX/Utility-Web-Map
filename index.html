@@ -27,7 +27,7 @@
     
     #infoDiv {
       display: none;
-      position: absolute;
+      position: fixed;
       top: 300px;
       right: 20px;
       background-color: #fff;
@@ -209,6 +209,7 @@
   
                     highlight = layerView.highlight(graphic);
   
+                    infoDiv.innerHTML = "Test"; // Add this line
                     infoDiv.innerHTML = 
                       "<span style='font-size: 1.2em;'>Feature Information</span><br><br>" +
                       "<b style='color: black;'>Diameter (Inches):</b>" + graphic.attributes.Diameter<br> +
