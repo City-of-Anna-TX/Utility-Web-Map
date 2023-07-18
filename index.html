@@ -42,6 +42,7 @@
 
   <script>
     require([
+      "esri/widgets/LayerList",
       "esri/layers/WebTileLayer",
       "esri/Map",
       "esri/Basemap",
@@ -65,6 +66,7 @@
       "esri/widgets/Search",
       "dojo/domReady!"
     ], function (
+      LayerList,
       WebTileLayer,
       Map,
       Basemap,
@@ -260,13 +262,22 @@
         });
 
         const legendExpand = new Expand({
+          expandIcon: "legend-left",
           view: view,
           content: new Legend({ view: view }),
-          group: "top-left",
           expanded: true
         });
 
         view.ui.add(legendExpand, "top-left");
+
+        const layerExpand = new Expand({
+          expandIcon: "layers",
+          view: view,
+          content: new layerList({ view: view }),
+          expanded: true
+        });
+
+        view.ui.add(layerExpand, "top-left");
         
     });
   </script>
