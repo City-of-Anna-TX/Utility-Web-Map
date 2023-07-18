@@ -16,14 +16,6 @@
       height: 100%;
       width: 100%;
     }
-
-    #basemapToggleDiv {
-      display: none;
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      z-index: 50;
-    }
     
     #infoDiv {
       display: none;
@@ -209,7 +201,6 @@
   
                     highlight = layerView.highlight(graphic);
   
-                    infoDiv.innerHTML = "Test"; // Add this line
                     infoDiv.innerHTML = 
                       "<span style='font-size: 1.2em;'>Feature Information</span><br><br>" +
                       "<b style='color: black;'>Diameter (Inches):</b>" + graphic.attributes.Diameter<br> +
