@@ -18,6 +18,7 @@
     }
 
     #basemapToggleDiv {
+      display: none;
       position: absolute;
       bottom: 20px;
       left: 20px;
@@ -86,14 +87,14 @@
       Popup,
       Search
     ) {
-      const api_key = "NTA2ZGIwNWEtMjhmYi00ZTY5LWJhN2QtN2IxZDNmOWMyY2E2"
-      const direction = 'Vert'; // Options: 'Vert', 'North', // Note: awaiting fix from esri to support E, W, S
-      const origin = [-96.5482347, 33.3487803];  // [Lat, Lon] for Location: ex: Austin, TX
-      const origin_zoom = 8;  // Starting Zoom level for the Web Map
-      let nearmap_min_zoom = 8;  // Nearmap Imagery Lowest resolution zoom level the user can view
-      const nearmap_max_zoom = 24;  // Nearmap Imagery Highest resolution zoom level the user can view
-      const opacity = 1.0; // Range of 0.1 to 1.0
-      const blend_mode = null;
+      //const api_key = "NTA2ZGIwNWEtMjhmYi00ZTY5LWJhN2QtN2IxZDNmOWMyY2E2"
+      //const direction = 'Vert'; // Options: 'Vert', 'North', // Note: awaiting fix from esri to support E, W, S
+      //const origin = [-96.5482347, 33.3487803];  // [Lat, Lon] for Location: ex: Austin, TX
+      //const origin_zoom = 8;  // Starting Zoom level for the Web Map
+      //let nearmap_min_zoom = 8;  // Nearmap Imagery Lowest resolution zoom level the user can view
+      //const nearmap_max_zoom = 24;  // Nearmap Imagery Highest resolution zoom level the user can view
+      //const opacity = 1.0; // Range of 0.1 to 1.0
+      //const blend_mode = null;
       
       //let lods = [];
       //const tilesize = 256;
@@ -133,26 +134,6 @@
           //blendMode: blend_mode,
       //});
       
-      const map = new WebMap({
-        basemap: "topo-vector",
-        ground: "world-elevation",
-      });
-
-      const view = new MapView({
-        container: "viewDiv",
-        map: map,
-        zoom: origin_zoom - nearmap_min_zoom,
-        map: map,
-        center: origin,
-        minZoom: nearmap_min_zoom,
-        maxZoom: nearmap_max_zoom,
-        //constraints: {
-          //lods: lods
-        //}
-      });
-
-      //map.add(nearmap_wt1);
-      
       const info = new OAuthInfo({
         appId: "vPDycv1jfayS124W",
         flowType: "auto",
@@ -160,6 +141,22 @@
       });
 
       esriId.registerOAuthInfos([info]);
+      const map = new WebMap({
+        basemap: "arcgis-imagery",
+      });
+
+      const view = new MapView({
+        container: "viewDiv",
+        zoom: 8,
+        center: [-96.5482347, 33.3487803],
+        map: map,
+        highlightOptions: {
+          fillOpacity: 0,
+          color: [50, 50, 50]
+        }
+      });
+
+      //map.add(nearmap_wt1);
       
       //let currentWLID = null;  // Initialize currentPrecinctID
       
