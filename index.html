@@ -18,7 +18,7 @@
     }
     
     #infoDiv {
-      display: block;
+      display: none;
       position: fixed;
       top: 300px;
       right: 20px;
@@ -302,20 +302,20 @@
 
         map.add(FHLayer);       
         
-        view.ui.add(
-          [
-            new Expand({
-              view: view,
-              content: new Search({ view: view })
-            }),
-            new Expand({
-              view: view,
-              content: new LayerList({ view: view }),
-              expanded: true
-            }),
-          ],
-          "top-right"  
-        ); 
+        //view.ui.add(
+          //[
+            //new Expand({
+              //view: view,
+              //content: new Search({ view: view })
+            //}),
+            //new Expand({
+              //view: view,
+              //content: new LayerList({ view: view }),
+              //expanded: true
+            //}),
+          //],
+          //"top-right"  
+        //); 
       
         view.ui.add(
           [
