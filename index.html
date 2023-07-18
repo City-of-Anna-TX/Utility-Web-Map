@@ -95,43 +95,43 @@
       const opacity = 1.0; // Range of 0.1 to 1.0
       const blend_mode = null;
       
-      let lods = [];
-      const tilesize = 256;
-      const earthCircumference = 40075016.685568;
-      const inchesPerMeter = 39.37;
-      const initialResolution = earthCircumference / tilesize;
-      for (let zoom = nearmap_min_zoom; zoom <= nearmap_max_zoom; zoom++) {
-          let resolution = initialResolution / Math.pow(2, zoom);
-          let scale = resolution * 96 * inchesPerMeter;
-          lods.push(new LOD({
-              level: zoom,
-              scale: scale,
-              resolution: resolution
-          }));
-      }
+      //let lods = [];
+      //const tilesize = 256;
+      //const earthCircumference = 40075016.685568;
+      //const inchesPerMeter = 39.37;
+      //const initialResolution = earthCircumference / tilesize;
+      //for (let zoom = nearmap_min_zoom; zoom <= nearmap_max_zoom; zoom++) {
+          //let resolution = initialResolution / Math.pow(2, zoom);
+          //let scale = resolution * 96 * inchesPerMeter;
+          //lods.push(new LOD({
+              //level: zoom,
+              //scale: scale,
+              //resolution: resolution
+          //}));
+      //}
 
-      const tileInfo = new TileInfo({
-          cols: 256,
-          dpi: 72,
-          format: "jpg",
-          height: 256,
-          lods: lods,
-          origin: new Point({
-              x: -20037508.342787,
-              y: 20037508.342787
-          }),
-          rows: 256,
-          spatialReference: SpatialReference.WebMercator,
-          width: 256
-      });
+      //const tileInfo = new TileInfo({
+          //cols: 256,
+          //dpi: 72,
+          //format: "jpg",
+          //height: 256,
+          //lods: lods,
+          //origin: new Point({
+              //x: -20037508.342787,
+              //y: 20037508.342787
+          //}),
+          //rows: 256,
+          //spatialReference: SpatialReference.WebMercator,
+          //width: 256
+      //});
       
-       const nearmap_wtl = new WebTileLayer({
-          urlTemplate: `https://api.nearmap.com/tiles/v3/${direction}/{level}/{col}/{row}.img?apikey=${api_key}`,
-          copyright: "Nearmap",
-          tileInfo: tileInfo,
-          opacity: opacity,
-          blendMode: blend_mode,
-      });
+      //const nearmap_wtl = new WebTileLayer({
+          //urlTemplate: `https://api.nearmap.com/tiles/v3/${direction}/{level}/{col}/{row}.img?apikey=${api_key}`,
+          //copyright: "Nearmap",
+          //tileInfo: tileInfo,
+          //opacity: opacity,
+          //blendMode: blend_mode,
+      //});
       
       const map = new WebMap({
         basemap: "topo-vector",
@@ -146,12 +146,12 @@
         center: origin,
         minZoom: nearmap_min_zoom,
         maxZoom: nearmap_max_zoom,
-        constraints: {
-          lods: lods
-        }
+        //constraints: {
+          //lods: lods
+        //}
       });
 
-      map.add(nearmap_wt1);
+      //map.add(nearmap_wt1);
       
       const info = new OAuthInfo({
         appId: "vPDycv1jfayS124W",
