@@ -172,7 +172,7 @@
       let currentWVID = null;
       let currentFHID = null;
       
-      view.whenLayerView(precinctLayer).then(function (layerView) {  
+      view.when().then(function () {  
         const FMLayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/4?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
           title: "Force Main",
@@ -180,52 +180,54 @@
         });
         
         map.add(FMLayer);
-
-        view.on("pointer-move", eventHandler);
-
-          let highlight;
-          const infoDiv = document.getElementById('infoDiv');
-
-          function eventHandler(event) {
-            const screenPoint = {
-              x: event.x,
-              y: event.y
-            };
-
-            view.hitTest(screenPoint, { tolerance: 10}).then(function(response) {
-              if (response.results.length > 0) {
-                const graphic = response.results[0].graphic;
-                const featureID = graphic.attributes.FID;  // Use the FID attribute
-
-                if (featureID !== currentFMID) {
-                  currentFMID = featureID;
-
+        
+        view.whenLayerView(FMLayer).then(function (layerView) {
+       
+          view.on("pointer-move", eventHandler);
+  
+            let highlight;
+            const infoDiv = document.getElementById('infoDiv');
+  
+            function eventHandler(event) {
+              const screenPoint = {
+                x: event.x,
+                y: event.y
+              };
+  
+              view.hitTest(screenPoint, { tolerance: 10}).then(function(response) {
+                if (response.results.length > 0) {
+                  const graphic = response.results[0].graphic;
+                  const featureID = graphic.attributes.FID;  // Use the FID attribute
+  
+                  if (featureID !== currentFMID) {
+                    currentFMID = featureID;
+  
+                    if (highlight) {
+                      highlight.remove();
+                      highlight = null;
+                    }
+  
+                    highlight = layerView.highlight(graphic);
+  
+                    infoDiv.innerHTML = 
+                      "<span style='font-size: 1.2em;'>Feature Information</span><br><br>" +
+                      "<b style='color: black;'>Diameter (Inches):</b>" + graphic.attributes.Diameter<br> +
+                      "<b style='color: black;'>Material:</b>" + graphic.attributes.Material<br> +
+                      "<b style='color: black;'>Year Installed:</b>" + graphic.attributes.Year_Built;
+                    
+                    infoDiv.style.display = 'block';
+                  }
+                } else {
                   if (highlight) {
                     highlight.remove();
                     highlight = null;
                   }
-
-                  highlight = layerView.highlight(graphic);
-
-                  infoDiv.innerHTML = 
-                    "<span style='font-size: 1.2em;'>Feature Information</span><br><br>" +
-                    "<b style='color: black;'>Diameter (Inches):</b>" + graphic.attributes.Diameter<br> +
-                    "<b style='color: black;'>Material:</b>" + graphic.attributes.Material<br> +
-                    "<b style='color: black;'>Year Installed:</b>" + graphic.attributes.Year_Built;
+                  currentFMID = null;
                   
-                  infoDiv.style.display = 'block';
+                  infoDiv.style.display = 'none';
                 }
-              } else {
-                if (highlight) {
-                  highlight.remove();
-                  highlight = null;
-                }
-                currentFMID = null;
-                
-                infoDiv.style.display = 'none';
-              }
-            });
-          }
+              });
+            }
         });
         
         const LSLayer = new FeatureLayer({
@@ -339,6 +341,7 @@
           "top-left"  
         );  
     });
+  });
   </script>
 </head>
 
