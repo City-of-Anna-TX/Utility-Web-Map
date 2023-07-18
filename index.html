@@ -162,22 +162,112 @@
       
       //view.when().then(function () {
         const FHLayer = new FeatureLayer({
-          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
-          title: "",
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/0?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          title: "Fire Hydrant",
           outFields: ["*"]
         });
 
         map.add(FHLayer);
+      
+        const WVLayer = new FeatureLayer({
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/1?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          title: "Water Valve",
+          outFields: ["*"]
+        });
 
-        //let currentFHID = null;
+        map.add(WVLayer);
+      
+        const PSLayer = new FeatureLayer({
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/2?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          title: "Pump Station",
+          outFields: ["*"]
+        });
+
+        map.add(PSLayer);
+
+        const WSTLayer = new FeatureLayer({
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/3?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          title: "Water Storage Tanks",
+          outFields: ["*"]
+        });
+
+        map.add(WSTLayer);
+
+        const WELayer = new FeatureLayer({
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/4?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          title: "Well",
+          outFields: ["*"]
+        });
+
+        map.add(WELayer);
+
+        const WLLayer = new FeatureLayer({
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/5?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          title: "Water Line",
+          outFields: ["*"]
+        });
+
+        map.add(WLLayer);
       
         const MHLayer = new FeatureLayer({
-          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
-          title: "",
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/0?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          title: "Manhole Cover",
           outFields: ["*"]
         });
 
         map.add(MHLayer);
+
+        const WTPLayer = new FeatureLayer({
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/1?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          title: "Wastewater Treatment Plant",
+          outFields: ["*"]
+        });
+
+        map.add(WTPLayer);
+
+        const LSLayer = new FeatureLayer({
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/2?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          title: "Lift Station",
+          outFields: ["*"]
+        });
+
+        map.add(LSLayer);
+
+        const SLLayer = new FeatureLayer({
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/3?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          title: "Sewer Line",
+          outFields: ["*"]
+        });
+
+        map.add(SLLayer);
+
+        const FMLayer = new FeatureLayer({
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/4?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          title: "Force Main",
+          outFields: ["*"]
+        });
+
+        map.add(FMLayer);
+
+        const searchWidget = new Search({
+          view: view,
+          locationEnabled: false,
+          popupEnabled: false
+        });
+
+        view.ui.add(searchWidget, {
+          position: "top-right"
+        });
+
+        const legendExpand = new Expand({
+          view: view,
+          content: new Legend({ view: view }),
+          group: "top-left",
+          expanded: true
+        });
+
+        view.ui.add(legendExpand, "top-left");
+        
     });
   </script>
 </head>
