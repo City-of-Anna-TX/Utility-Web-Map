@@ -28,7 +28,7 @@
     #infoDiv {
       display: none;
       position: fixed;
-      top: 55px;
+      top: 300px;
       right: 20px;
       background-color: #fff;
       padding: 10px;
@@ -194,7 +194,7 @@
                 y: event.y
               };
   
-              view.hitTest(screenPoint, { tolerance: 10}).then(function(response) {
+              view.hitTest(screenPoint, { tolerance: 10 }).then(function(response) {
                 if (response.results.length > 0) {
                   const graphic = response.results[0].graphic;
                   const featureID = graphic.attributes.FID;  // Use the FID attribute
