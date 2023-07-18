@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>City of Anna Utility Map</title>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.17/esri/themes/light/main.css" />
+
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    #infoDiv {
+      display: none;
+      position: fixed;
+      top: 55px;
+      right: 20px;
+      background-color: #fff;
+      padding: 10px;
+      z-index: 99;
+      font-family: "Lacuna", sans-serif;
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+
+  <script src="https://js.arcgis.com/4.17/"></script>
+
+  <script>
+    require([
+      "esri/WebMap",
+      "esri/views/MapView",
+      "esri/layers/FeatureLayer",
+      "esri/renderers/SimpleRenderer",
+      "esri/symbols/SimpleMarkerSymbol",
+      "esri/widgets/Legend",
+      "esri/widgets/Bookmarks",
+      "esri/widgets/Expand",
+      "esri/PopupTemplate",
+      "esri/widgets/Popup",
+      "esri/widgets/Search"
+    ], function (
+      WebMap,
+      MapView,
+      FeatureLayer,
+      SimpleRenderer,
+      SimpleMarkerSymbol,
+      Legend,
+      Bookmarks,
+      Expand,
+      PopupTemplate,
+      Popup,
+      Search
+    ) {
+      const clientId = 'vPDycv1jfayS124W';
+      const redirectUri = 'con-6r.github.io';
+      const signInButton = document.getElementById('sign-in');
+      // do this on a button click to avoid popup blockers
+        document.addEventListener('click', function(){
+        window.open('https://www.arcgis.com/sharing/rest/oauth2/authorize?client_id='+clientId+'&response_type=token&expiration=20160&redirect_uri=' + window.encodeURIComponent(redirectUri), 'oauth-window', 'height=400,width=600,menubar=no,location=yes,resizable=yes,scrollbars=yes,status=yes')
+      });
+      const map = new WebMap({
+        portalItem: {
+          id: "a1a6191761634407a168fe1824d72003"
+        }
+      });
+
+      const view = new MapView({
+        container: "viewDiv",
+        zoom: 4,
+        center: [-98.554210, 37.813620],
+        map: map,
+        highlightOptions: {
+          fillOpacity: 0,
+          color: [50, 50, 50]
+        },
+        constraints: {
+          maxScale: 35000
+        }
+      });
+
+       //let currentWLID = null;  // Initialize currentPrecinctID
+
+      //view.when().then(function () {
+        // Create the layer for the bubbles
+        const WLLayer = new FeatureLayer({
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          minScale: 200000000,
+          maxScale: 35000,
+          title: "",
+          outFields: ["*"]
+        });
+
+        map.add(WLLayer);
+});
+  </script>
+</head>
+
+<body>
+  <div id="viewDiv"></div>
+  <div id="infoDiv"></div>
+</body>
+</html>
