@@ -34,6 +34,14 @@
 
   <script>
     require([
+      "esri/layers/WebTileLayer",
+      "esri/Map",
+      "esri/Basemap",
+      "esri/layers/support/TileInfo",
+      "esri/widgets/BasemapToggle",
+      "esri/geometry/SpatialReference",
+      "esri/layers/support/LOD",
+      "esri/geometry/Point",
       "esri/identity/OAuthInfo",
       "esri/identity/IdentityManager",
       "esri/WebMap",
@@ -46,8 +54,17 @@
       "esri/widgets/Expand",
       "esri/PopupTemplate",
       "esri/widgets/Popup",
-      "esri/widgets/Search"
+      "esri/widgets/Search",
+      "dojo/domReady!"
     ], function (
+      WebTileLayer,
+      Map,
+      Basemap,
+      TileInfo,
+      BasemapToggle,
+      SpatialReference,
+      LOD,
+      Point,
       OAuthInfo,
       esriId,
       WebMap,
@@ -62,6 +79,7 @@
       Popup,
       Search
     ) {
+      
       const info = new OAuthInfo({
         appId: "vPDycv1jfayS124W",
         flowType: "auto",
@@ -69,71 +87,75 @@
       });
 
       esriId.registerOAuthInfos([info]);
-      //const clientId = 'vPDycv1jfayS124W';
-      //const redirectUri = 'https://city-of-anna-tx.github.io/Utility-Web-Map/';
-      //const signInButton = document.getElementById('sign-in');
-      // do this on a button click to avoid popup blockers
-        //document.addEventListener('click', function(){
-        //window.open('https://www.arcgis.com/sharing/rest/oauth2/authorize?client_id='+clientId+'&response_type=token&expiration=20160&redirect_uri=' + window.encodeURIComponent(redirectUri), 'oauth-window', 'height=400,width=600,menubar=no,location=yes,resizable=yes,scrollbars=yes,status=yes')
-        //const App = () => {
-        // state
-        //const [authed, setAuthed] = useState(false);
-        //const [token, setToken] = useState(null);
-        //const [user, setUser] = useState(null);
+      
+      const api_key = "NTA2ZGIwNWEtMjhmYi00ZTY5LWJhN2QtN2IxZDNmOWMyY2E2"
+      const direction = 'Vert'; // Options: 'Vert', 'North', // Note: awaiting fix from esri to support E, W, S
+      const origin = [-96.5482347, 33.3487803];  // [Lat, Lon] for Location: ex: Austin, TX
+      const origin_zoom = 10;  // Starting Zoom level for the Web Map
+      let nearmap_min_zoom = 17;  // Nearmap Imagery Lowest resolution zoom level the user can view
+      const nearmap_max_zoom = 24;  // Nearmap Imagery Highest resolution zoom level the user can view
+      const opacity = 1.0; // Range of 0.1 to 1.0
+      const blend_mode = null;
+      
+      let lods = [];
+      const tilesize = 256;
+      const earthCircumference = 40075016.685568;
+      const inchesPerMeter = 39.37;
+      const initialResolution = earthCircumference / tilesize;
+      for (let zoom = nearmap_min_zoom; zoom <= nearmap_max_zoom; zoom++) {
+          let resolution = initialResolution / Math.pow(2, zoom);
+          let scale = resolution * 96 * inchesPerMeter;
+          lods.push(new LOD({
+              level: zoom,
+              scale: scale,
+              resolution: resolution
+          }));
+      }
 
-        // functions
-        //const removeHash = () => {
-          //window.history.pushState('', document.title, window.location.pathname);
-        //};
-
-          //const extractToken = () => {
-            // drop # from string
-            //const hash = qs.parse(window.location.hash.slice(1));
-
-            // extract token and username
-            //if (hash.access_token && hash.username) {
-              //setAuthed(true);
-              //setToken(hash.access_token);
-              //setUser(hash.username);
-            //}
-            // clear hash
-            //if (hash) removeHash();
-          //};
-
-          // lifecycle
-          //useEffect(() => {
-            //extractToken();
-          //}, []);
-
-          // render
-          //if (!authed) {
-            //window.open('https://city-of-anna-tx.github.io/Utility-Web-Map/')
-          //}
-
-          //return token={token}, user={user};
-        //};
-      //});
+      const tileInfo = new TileInfo({
+          cols: 256,
+          dpi: 72,
+          format: "jpg",
+          height: 256,
+          lods: lods,
+          origin: new Point({
+              x: -20037508.342787,
+              y: 20037508.342787
+          }),
+          rows: 256,
+          spatialReference: SpatialReference.WebMercator,
+          width: 256
+      });
+      
+       const nearmap_wtl = new WebTileLayer({
+          urlTemplate: `https://api.nearmap.com/tiles/v3/${direction}/{level}/{col}/{row}.img?apikey=${api_key}`,
+          copyright: "Nearmap",
+          tileInfo: tileInfo,
+          opacity: opacity,
+          blendMode: blend_mode,
+      });
+      
       const map = new WebMap({
-        portalItem: {
-          id: "3582b744bba84668b52a16b0b6942544"
-        }
+        basemap: "topo-vector",
+        ground: "world-elevation",
       });
 
       const view = new MapView({
         container: "viewDiv",
-        zoom: 4,
-        center: [-98.554210, 37.813620],
         map: map,
-        highlightOptions: {
-          fillOpacity: 0,
-          color: [50, 50, 50]
-        },
+        zoom: origin_zoom - nearmap_min_zoom,
+        map: map,
+        center: origin,
+        minZoom: nearmap_min_zoom,
+        maxZoom: nearmap_max_zoom,
         constraints: {
-          maxScale: 35000
+          lods: lods
         }
       });
 
-       //let currentWLID = null;  // Initialize currentPrecinctID
+      map.add(nearmap_wt1);
+      
+      //let currentWLID = null;  // Initialize currentPrecinctID
 
       //view.when().then(function () {
         const WLLayer = new FeatureLayer({
