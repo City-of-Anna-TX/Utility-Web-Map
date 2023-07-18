@@ -251,27 +251,27 @@
         });
 
         map.add(FHLayer);       
-
-        const searchWidget = new Search({
-          view: view
-        });
-
-        view.ui.add(searchWidget, {
-          position: "top-right"
-        });
         
         view.ui.add(
           [
             new Expand({
               view: view,
-              content: new Legend({ view: view }),
-              group: "top-left",
-              expanded: true
+              content: new Search({ view: view })
             }),
             new Expand({
               view: view,
               content: new LayerList({ view: view }),
-              group: "top-left",
+              expanded: true
+            }),
+          ],
+          "top-right"  
+        ); 
+      
+        view.ui.add(
+          [
+            new Expand({
+              view: view,
+              content: new Legend({ view: view }),
               expanded: true
             }),
             new Expand({
