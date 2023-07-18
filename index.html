@@ -158,16 +158,26 @@
 
       //map.add(nearmap_wt1);
       
-      //let currentWLID = null;  // Initialize currentPrecinctID
+      //let currentFHID = null;
       
       //view.when().then(function () {
-        const WLLayer = new FeatureLayer({
+        const FHLayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
           title: "",
           outFields: ["*"]
         });
 
-        map.add(WLLayer);
+        map.add(FHLayer);
+
+        //let currentFHID = null;
+      
+        const FHLayer = new FeatureLayer({
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          title: "",
+          outFields: ["*"]
+        });
+
+        map.add(FHLayer);
     });
   </script>
 </head>
