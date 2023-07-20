@@ -173,9 +173,23 @@
         });
         
         map.add(FMLayer);
+
+        const FMSymbol = new SimpleLineSymbol({
+          type: "simple-line",
+          color: "orange",
+          width: 2,
+          cap: "square",
+          join: "round"
+        });
         
         view.whenLayerView(FMLayer).then(function (layerView) {
-       
+          const FMRenderer = new SimpleRenderer({
+            type: "simple",
+            symbol: FMSymbol
+          });
+
+          FMLayer.renderer = FMRenderer;
+          
           view.on("pointer-move", eventHandler);
   
             let highlight;
@@ -759,13 +773,118 @@
 
         map.add(WVLayer);
 
+        view.whenLayerView(WVLayer).then(function (layerView) {
+       
+          view.on("pointer-move", eventHandler);
+  
+            let highlight;
+            const infoDiv = document.getElementById('infoDiv');
+  
+            function eventHandler(event) {
+              const screenPoint = {
+                x: event.x,
+                y: event.y
+              };
+
+              infoDiv.style.top = `${event.y + 10}px`;
+              infoDiv.style.left = `${event.x + 10}px`;
+  
+              view.hitTest(screenPoint, { tolerance: 10 }).then(function(response) {
+                if (response.results.length > 0) {
+                  const graphic = response.results[0].graphic;
+                  const featureID = graphic.attributes.FID;  // Use the FID attribute
+  
+                  if (featureID !== currentWVID) {
+                    currentWVID = featureID;
+  
+                    if (highlight) {
+                      highlight.remove();
+                      highlight = null;
+                    }
+  
+                    highlight = layerView.highlight(graphic);
+  
+                    infoDiv.innerHTML = 
+                      "<span style='font-size: 1.1em;'>Information</span><br><br>" +
+                      "Status: <b>" + graphic.attributes.ValveStatus + "</b><br>" +
+                      "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
+                    
+                    infoDiv.style.display = 'block';
+                  }
+                } else {
+                  if (highlight) {
+                    highlight.remove();
+                    highlight = null;
+                  }
+                  currentWVID = null;
+                  
+                  infoDiv.style.display = 'none';
+                }
+              });
+            }
+        });
+
         const FHLayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/0?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
           title: "Fire Hydrant",
           outFields: ["*"]
         });
 
-        map.add(FHLayer);       
+        map.add(FHLayer);
+
+        view.whenLayerView(FHLayer).then(function (layerView) {
+       
+          view.on("pointer-move", eventHandler);
+  
+            let highlight;
+            const infoDiv = document.getElementById('infoDiv');
+  
+            function eventHandler(event) {
+              const screenPoint = {
+                x: event.x,
+                y: event.y
+              };
+
+              infoDiv.style.top = `${event.y + 10}px`;
+              infoDiv.style.left = `${event.x + 10}px`;
+  
+              view.hitTest(screenPoint, { tolerance: 10 }).then(function(response) {
+                if (response.results.length > 0) {
+                  const graphic = response.results[0].graphic;
+                  const featureID = graphic.attributes.FID;  // Use the FID attribute
+  
+                  if (featureID !== currentFHID) {
+                    currentFHID = featureID;
+  
+                    if (highlight) {
+                      highlight.remove();
+                      highlight = null;
+                    }
+  
+                    highlight = layerView.highlight(graphic);
+  
+                    infoDiv.innerHTML = 
+                      "<span style='font-size: 1.2em;'>Information</span><br><br>" +
+                      "Status: <b>" + graphic.attributes.Status + "</b><br>" +
+                      "Location: <b>" + graphic.attributes.Location + "</b><br>" +
+                      "District: <b>" + graphic.attributes.District + "</b><br>" +
+                      "Year Installed: <b>" + graphic.attributes.Year_ + "</b><br>" +
+                      "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
+                    
+                    infoDiv.style.display = 'block';
+                  }
+                } else {
+                  if (highlight) {
+                    highlight.remove();
+                    highlight = null;
+                  }
+                  currentFHID = null;
+                  
+                  infoDiv.style.display = 'none';
+                }
+              });
+            }
+        });
         
         view.ui.add(
           [
