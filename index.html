@@ -537,7 +537,7 @@
 
         map.add(SLLayer);
         
-        const lineSymbol = new SimpleLineSymbol({
+        const SewerSymbol = new SimpleLineSymbol({
           type: "simple-line", 
           color: "green",
           width: 2,
@@ -553,7 +553,7 @@
         view.whenLayerView(SLLayer).then(function (layerView) {
           const WaterRenderer = new SimpleRenderer({
             type: "simple",
-            symbol: WaterSymbol
+            symbol: SewerSymbol
           });
           
           view.on("pointer-move", eventHandler);
