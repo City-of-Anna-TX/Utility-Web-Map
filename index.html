@@ -167,7 +167,7 @@
       
       view.when().then(function () {  
         const FMLayer = new FeatureLayer({
-          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/4?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/4?&token=klmwp7vF0BHcC0g9DRsAAhFQprv1VBWdmQQBQLGaj1xFl7QFvhpLWWT8pqcUE0AQra2lWGu_U80I6sI5vLueGofQOWu_3u1MQbnfuqn9sKTkZrAduVHGoQxErOhmHjFOXd8uFJPAHexA3nYU9_CeT1MsNHlzZlWZtAk2o9xziD6jW7bGyt5DcSbkM-GGCXQZjtYYy1071bqf9rcqTVM5KfsxrSWrry40Yz0CBvM_Nj8",
           title: "Force Main",
           outFields: ["*"]
         });
@@ -241,9 +241,10 @@
               });
             }
         });
-        
+      });
+      view.when().then(function () { 
         const LSLayer = new FeatureLayer({
-          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/2?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/2?&token=klmwp7vF0BHcC0g9DRsAAhFQprv1VBWdmQQBQLGaj1xFl7QFvhpLWWT8pqcUE0AQra2lWGu_U80I6sI5vLueGofQOWu_3u1MQbnfuqn9sKTkZrAduVHGoQxErOhmHjFOXd8uFJPAHexA3nYU9_CeT1MsNHlzZlWZtAk2o9xziD6jW7bGyt5DcSbkM-GGCXQZjtYYy1071bqf9rcqTVM5KfsxrSWrry40Yz0CBvM_Nj8",
           title: "Lift Station",
           outFields: ["*"]
         });
@@ -301,10 +302,10 @@
               });
             }
         });
-        
+      });  
         
         const WTPLayer = new FeatureLayer({
-          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/1?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/1?&token=klmwp7vF0BHcC0g9DRsAAhFQprv1VBWdmQQBQLGaj1xFl7QFvhpLWWT8pqcUE0AQra2lWGu_U80I6sI5vLueGofQOWu_3u1MQbnfuqn9sKTkZrAduVHGoQxErOhmHjFOXd8uFJPAHexA3nYU9_CeT1MsNHlzZlWZtAk2o9xziD6jW7bGyt5DcSbkM-GGCXQZjtYYy1071bqf9rcqTVM5KfsxrSWrry40Yz0CBvM_Nj8",
           title: "Wastewater Treatment Plant",
           outFields: ["*"]
         });
@@ -364,7 +365,7 @@
         });
       
         const PSLayer = new FeatureLayer({
-          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/2?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/2?&token=klmwp7vF0BHcC0g9DRsAAhFQprv1VBWdmQQBQLGaj1xFl7QFvhpLWWT8pqcUE0AQra2lWGu_U80I6sI5vLueGofQOWu_3u1MQbnfuqn9sKTkZrAduVHGoQxErOhmHjFOXd8uFJPAHexA3nYU9_CeT1MsNHlzZlWZtAk2o9xziD6jW7bGyt5DcSbkM-GGCXQZjtYYy1071bqf9rcqTVM5KfsxrSWrry40Yz0CBvM_Nj8",
           title: "Pump Station",
           outFields: ["*"]
         });
@@ -425,7 +426,7 @@
         });
       
         const WELayer = new FeatureLayer({
-          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/4?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/4?&token=klmwp7vF0BHcC0g9DRsAAhFQprv1VBWdmQQBQLGaj1xFl7QFvhpLWWT8pqcUE0AQra2lWGu_U80I6sI5vLueGofQOWu_3u1MQbnfuqn9sKTkZrAduVHGoQxErOhmHjFOXd8uFJPAHexA3nYU9_CeT1MsNHlzZlWZtAk2o9xziD6jW7bGyt5DcSbkM-GGCXQZjtYYy1071bqf9rcqTVM5KfsxrSWrry40Yz0CBvM_Nj8",
           title: "Well",
           outFields: ["*"]
         });
@@ -484,7 +485,7 @@
         });
       
         const WSTLayer = new FeatureLayer({
-          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/3?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/3?&token=klmwp7vF0BHcC0g9DRsAAhFQprv1VBWdmQQBQLGaj1xFl7QFvhpLWWT8pqcUE0AQra2lWGu_U80I6sI5vLueGofQOWu_3u1MQbnfuqn9sKTkZrAduVHGoQxErOhmHjFOXd8uFJPAHexA3nYU9_CeT1MsNHlzZlWZtAk2o9xziD6jW7bGyt5DcSbkM-GGCXQZjtYYy1071bqf9rcqTVM5KfsxrSWrry40Yz0CBvM_Nj8",
           title: "Water Storage Tanks",
           outFields: ["*"]
         });
@@ -544,7 +545,7 @@
         });
       
         const SLLayer = new FeatureLayer({
-          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/3?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/3?&token=klmwp7vF0BHcC0g9DRsAAhFQprv1VBWdmQQBQLGaj1xFl7QFvhpLWWT8pqcUE0AQra2lWGu_U80I6sI5vLueGofQOWu_3u1MQbnfuqn9sKTkZrAduVHGoQxErOhmHjFOXd8uFJPAHexA3nYU9_CeT1MsNHlzZlWZtAk2o9xziD6jW7bGyt5DcSbkM-GGCXQZjtYYy1071bqf9rcqTVM5KfsxrSWrry40Yz0CBvM_Nj8",
           title: "Sewer Line",
           outFields: ["*"]
         });
@@ -627,7 +628,7 @@
         });
         
         const WLLayer = new FeatureLayer({
-          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/5?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/5?&token=klmwp7vF0BHcC0g9DRsAAhFQprv1VBWdmQQBQLGaj1xFl7QFvhpLWWT8pqcUE0AQra2lWGu_U80I6sI5vLueGofQOWu_3u1MQbnfuqn9sKTkZrAduVHGoQxErOhmHjFOXd8uFJPAHexA3nYU9_CeT1MsNHlzZlWZtAk2o9xziD6jW7bGyt5DcSbkM-GGCXQZjtYYy1071bqf9rcqTVM5KfsxrSWrry40Yz0CBvM_Nj8",
           title: "Water Line",
           outFields: ["*"]
         });
@@ -702,7 +703,7 @@
         });
       
         const MHLayer = new FeatureLayer({
-          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/0?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/0?&token=klmwp7vF0BHcC0g9DRsAAhFQprv1VBWdmQQBQLGaj1xFl7QFvhpLWWT8pqcUE0AQra2lWGu_U80I6sI5vLueGofQOWu_3u1MQbnfuqn9sKTkZrAduVHGoQxErOhmHjFOXd8uFJPAHexA3nYU9_CeT1MsNHlzZlWZtAk2o9xziD6jW7bGyt5DcSbkM-GGCXQZjtYYy1071bqf9rcqTVM5KfsxrSWrry40Yz0CBvM_Nj8",
           title: "Manhole",
           outFields: ["*"]
         });
@@ -766,7 +767,7 @@
         });
       
         const WVLayer = new FeatureLayer({
-          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/1?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/1?&token=klmwp7vF0BHcC0g9DRsAAhFQprv1VBWdmQQBQLGaj1xFl7QFvhpLWWT8pqcUE0AQra2lWGu_U80I6sI5vLueGofQOWu_3u1MQbnfuqn9sKTkZrAduVHGoQxErOhmHjFOXd8uFJPAHexA3nYU9_CeT1MsNHlzZlWZtAk2o9xziD6jW7bGyt5DcSbkM-GGCXQZjtYYy1071bqf9rcqTVM5KfsxrSWrry40Yz0CBvM_Nj8",
           title: "Water Valve",
           outFields: ["*"]
         });
@@ -825,7 +826,7 @@
         });
 
         const FHLayer = new FeatureLayer({
-          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/0?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
+          url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/0?&token=klmwp7vF0BHcC0g9DRsAAhFQprv1VBWdmQQBQLGaj1xFl7QFvhpLWWT8pqcUE0AQra2lWGu_U80I6sI5vLueGofQOWu_3u1MQbnfuqn9sKTkZrAduVHGoQxErOhmHjFOXd8uFJPAHexA3nYU9_CeT1MsNHlzZlWZtAk2o9xziD6jW7bGyt5DcSbkM-GGCXQZjtYYy1071bqf9rcqTVM5KfsxrSWrry40Yz0CBvM_Nj8",
           title: "Fire Hydrant",
           outFields: ["*"]
         });
