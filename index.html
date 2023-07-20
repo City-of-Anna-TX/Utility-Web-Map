@@ -590,7 +590,7 @@
                       "Notes: <b>" + graphic.attributes.Notes + "</b><br>" +
                       "Diameter (Inches): <b>" + graphic.attributes.Diameter_ + "</b><br>" +
                       "Material: <b>" + graphic.attributes.Material_ + "</b><br>" +
-                      "Year Installed: <b>" + graphic.attributes.Year_Built + "</b><br>" +
+                      "Year Installed: <b>" + (graphic.attributes.Year_Built || 'N/A') + "</b><br>" +
                       "Upstream Invert Elevation: <b>" + graphic.attributes.FROM_INV + "</b><br>" +
                       "Downstream Invert Elevation: <b>" + graphic.attributes.TO_INV + "</b><br>" +
                       "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
