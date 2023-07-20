@@ -20,8 +20,6 @@
     #infoDiv {
       display: none;
       position: fixed;
-      top: 300px;
-      right: 20px;
       background-color: #fff;
       padding: 10px;
       z-index: 99;
@@ -186,6 +184,9 @@
                 x: event.x,
                 y: event.y
               };
+
+              infoDiv.style.top = `${event.y + 10}px`;
+              infoDiv.style.left = `${event.x + 10}px`;
   
               view.hitTest(screenPoint, { tolerance: 10 }).then(function(response) {
                 if (response.results.length > 0) {
