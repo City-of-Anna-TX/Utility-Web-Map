@@ -47,7 +47,8 @@
       "esri/views/MapView",
       "esri/layers/FeatureLayer",
       "esri/renderers/SimpleRenderer",
-      "esri/symbols/SimpleMarkerSymbol",
+      "esri/symbols.SimpleLineSymbol",
+      "esri/symbols/LineSymbolMarker",
       "esri/widgets/Legend",
       "esri/widgets/Bookmarks",
       "esri/widgets/Expand",
@@ -71,7 +72,8 @@
       MapView,
       FeatureLayer,
       SimpleRenderer,
-      SimpleMarkerSymbol,
+      LineSymbolMarker,
+      SimpleLineSymbol,
       Legend,
       Bookmarks,
       Expand,
@@ -204,7 +206,7 @@
                     highlight = layerView.highlight(graphic);
   
                     infoDiv.innerHTML = 
-                      "<span style='font-size: 1.2em;'>Information</span><br><br>" +
+                      "<span style='font-size: 1.1em;'>Information</span><br><br>" +
                       "Status: <b>" + graphic.attributes.Description + "</b><br>" +
                       "Diameter (Inches): <b>" + graphic.attributes.Diameter + "</b><br>" +
                       "Material: <b>" + graphic.attributes.Material + "</b><br>" +
@@ -266,7 +268,7 @@
                     highlight = layerView.highlight(graphic);
   
                     infoDiv.innerHTML = 
-                      "<span style='font-size: 1.2em;'>Information</span><br><br>" +
+                      "<span style='font-size: 1.1em;'>Information</span><br><br>" +
                       "Status: <b>" + graphic.attributes.Future_Existing + "</b><br>" +
                       "Facility Name: <b>" + graphic.attributes.Facility_Name + "</b><br>" +
                       "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
@@ -278,7 +280,7 @@
                     highlight.remove();
                     highlight = null;
                   }
-                  currentFMID = null;
+                  currentLSID = null;
                   
                   infoDiv.style.display = 'none';
                 }
@@ -294,6 +296,58 @@
         });
 
         map.add(WTPLayer);
+
+        view.whenLayerView(WTPLayer).then(function (layerView) {
+       
+          view.on("pointer-move", eventHandler);
+  
+            let highlight;
+            const infoDiv = document.getElementById('infoDiv');
+  
+            function eventHandler(event) {
+              const screenPoint = {
+                x: event.x,
+                y: event.y
+              };
+
+              infoDiv.style.top = `${event.y + 10}px`;
+              infoDiv.style.left = `${event.x + 10}px`;
+  
+              view.hitTest(screenPoint, { tolerance: 10 }).then(function(response) {
+                if (response.results.length > 0) {
+                  const graphic = response.results[0].graphic;
+                  const featureID = graphic.attributes.FID;  // Use the FID attribute
+  
+                  if (featureID !== currentWTPID) {
+                    currentWTPID = featureID;
+  
+                    if (highlight) {
+                      highlight.remove();
+                      highlight = null;
+                    }
+  
+                    highlight = layerView.highlight(graphic);
+  
+                    infoDiv.innerHTML = 
+                      "<span style='font-size: 1.1em;'>Information</span><br><br>" +
+                      "Facility Name: <b>" + graphic.attributes.Facility_Name + "</b><br>" +
+                      "Capacity: <b>" + graphic.attributes.Capacity + "</b><br>" +
+                      "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
+                    
+                    infoDiv.style.display = 'block';
+                  }
+                } else {
+                  if (highlight) {
+                    highlight.remove();
+                    highlight = null;
+                  }
+                  currentWTPID = null;
+                  
+                  infoDiv.style.display = 'none';
+                }
+              });
+            }
+        });
       
         const PSLayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/2?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
@@ -302,6 +356,59 @@
         });
 
         map.add(PSLayer);
+
+        view.whenLayerView(PSLayer).then(function (layerView) {
+       
+          view.on("pointer-move", eventHandler);
+  
+            let highlight;
+            const infoDiv = document.getElementById('infoDiv');
+  
+            function eventHandler(event) {
+              const screenPoint = {
+                x: event.x,
+                y: event.y
+              };
+
+              infoDiv.style.top = `${event.y + 10}px`;
+              infoDiv.style.left = `${event.x + 10}px`;
+  
+              view.hitTest(screenPoint, { tolerance: 10 }).then(function(response) {
+                if (response.results.length > 0) {
+                  const graphic = response.results[0].graphic;
+                  const featureID = graphic.attributes.FID;  // Use the FID attribute
+  
+                  if (featureID !== currentPSID) {
+                    currentPSID = featureID;
+  
+                    if (highlight) {
+                      highlight.remove();
+                      highlight = null;
+                    }
+  
+                    highlight = layerView.highlight(graphic);
+  
+                    infoDiv.innerHTML = 
+                      "<span style='font-size: 1.1em;'>Information</span><br><br>" +
+                      "Status: <b>" + graphic.attributes.Layer + "</b><br>" +
+                      "Facility Name: <b>" + graphic.attributes.Station_Name + "</b><br>" +
+                      "Pump Identifier: <b>" + graphic.attributes.Pump_Identifier + "</b><br>" +
+                      "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
+                    
+                    infoDiv.style.display = 'block';
+                  }
+                } else {
+                  if (highlight) {
+                    highlight.remove();
+                    highlight = null;
+                  }
+                  currentPSID = null;
+                  
+                  infoDiv.style.display = 'none';
+                }
+              });
+            }
+        });
       
         const WELayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/4?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
@@ -310,6 +417,57 @@
         });
 
         map.add(WELayer);
+
+        view.whenLayerView(WELayer).then(function (layerView) {
+       
+          view.on("pointer-move", eventHandler);
+  
+            let highlight;
+            const infoDiv = document.getElementById('infoDiv');
+  
+            function eventHandler(event) {
+              const screenPoint = {
+                x: event.x,
+                y: event.y
+              };
+
+              infoDiv.style.top = `${event.y + 10}px`;
+              infoDiv.style.left = `${event.x + 10}px`;
+  
+              view.hitTest(screenPoint, { tolerance: 10 }).then(function(response) {
+                if (response.results.length > 0) {
+                  const graphic = response.results[0].graphic;
+                  const featureID = graphic.attributes.FID;  // Use the FID attribute
+  
+                  if (featureID !== currentWEID) {
+                    currentWEID = featureID;
+  
+                    if (highlight) {
+                      highlight.remove();
+                      highlight = null;
+                    }
+  
+                    highlight = layerView.highlight(graphic);
+  
+                    infoDiv.innerHTML = 
+                      "<span style='font-size: 1.1em;'>Information</span><br><br>" +
+                      "Well Name: <b>" + graphic.attributes.Well_Identifier + "</b><br>" +
+                      "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
+                    
+                    infoDiv.style.display = 'block';
+                  }
+                } else {
+                  if (highlight) {
+                    highlight.remove();
+                    highlight = null;
+                  }
+                  currentWEID = null;
+                  
+                  infoDiv.style.display = 'none';
+                }
+              });
+            }
+        });
       
         const WSTLayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/3?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
@@ -318,6 +476,58 @@
         });
 
         map.add(WSTLayer);
+
+        view.whenLayerView(WSTLayer).then(function (layerView) {
+       
+          view.on("pointer-move", eventHandler);
+  
+            let highlight;
+            const infoDiv = document.getElementById('infoDiv');
+  
+            function eventHandler(event) {
+              const screenPoint = {
+                x: event.x,
+                y: event.y
+              };
+
+              infoDiv.style.top = `${event.y + 10}px`;
+              infoDiv.style.left = `${event.x + 10}px`;
+  
+              view.hitTest(screenPoint, { tolerance: 10 }).then(function(response) {
+                if (response.results.length > 0) {
+                  const graphic = response.results[0].graphic;
+                  const featureID = graphic.attributes.FID;  // Use the FID attribute
+  
+                  if (featureID !== currentWSTID) {
+                    currentWSTID = featureID;
+  
+                    if (highlight) {
+                      highlight.remove();
+                      highlight = null;
+                    }
+  
+                    highlight = layerView.highlight(graphic);
+  
+                    infoDiv.innerHTML = 
+                      "<span style='font-size: 1.1em;'>Information</span><br><br>" +
+                      "Status: <b>" + graphic.attributes.Layer + "</b><br>" +
+                      "Tank Identifier: <b>" + graphic.attributes.Tank_Identifier + "</b><br>" +
+                      "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
+                    
+                    infoDiv.style.display = 'block';
+                  }
+                } else {
+                  if (highlight) {
+                    highlight.remove();
+                    highlight = null;
+                  }
+                  currentWSTID = null;
+                  
+                  infoDiv.style.display = 'none';
+                }
+              });
+            }
+        });
       
         const SLLayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/3?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
@@ -325,7 +535,80 @@
           outFields: ["*"]
         });
 
-        map.add(SLLayer); 
+        map.add(SLLayer);
+        
+        const lineSymbol = new SimpleLineSymbol({
+          type: "simple-line", 
+          color: "green",
+          width: 2,
+          cap = "square",
+          join = "round",
+          marker: { // autocasts from LineSymbolMarker
+            style: "arrow",
+            color: "lightgreen",
+            placement: "end"
+          }
+        });
+        
+        view.whenLayerView(SLLayer).then(function (layerView) {
+          const WaterRenderer = new SimpleRenderer({
+            type: "simple",
+            symbol: WaterSymbol
+          });
+          
+          view.on("pointer-move", eventHandler);
+  
+            let highlight;
+            const infoDiv = document.getElementById('infoDiv');
+  
+            function eventHandler(event) {
+              const screenPoint = {
+                x: event.x,
+                y: event.y
+              };
+
+              infoDiv.style.top = `${event.y + 10}px`;
+              infoDiv.style.left = `${event.x + 10}px`;
+  
+              view.hitTest(screenPoint, { tolerance: 10 }).then(function(response) {
+                if (response.results.length > 0) {
+                  const graphic = response.results[0].graphic;
+                  const featureID = graphic.attributes.FID;  // Use the FID attribute
+  
+                  if (featureID !== currentSLID) {
+                    currentSLID = featureID;
+  
+                    if (highlight) {
+                      highlight.remove();
+                      highlight = null;
+                    }
+  
+                    highlight = layerView.highlight(graphic);
+  
+                    infoDiv.innerHTML = 
+                      "<span style='font-size: 1.1em;'>Information</span><br><br>" +
+                      "Notes: <b>" + graphic.attributes.Notes + "</b><br>" +
+                      "Diameter (Inches): <b>" + graphic.attributes.Diameter_ + "</b><br>" +
+                      "Material: <b>" + graphic.attributes.Material_ + "</b><br>" +
+                      "Year Installed: <b>" + graphic.attributes.Year_Built "</b><br>" +
+                      "Upstream Invert Elevation: <b>" + graphic.attributes.FROM_INV + "</b><br>" +
+                      "Downstream Invert Elevation: <b>" + graphic.attributes.TO_INV + "</b><br>" +
+                      "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
+                    
+                    infoDiv.style.display = 'block';
+                  }
+                } else {
+                  if (highlight) {
+                    highlight.remove();
+                    highlight = null;
+                  }
+                  currentSLID = null;
+                  
+                  infoDiv.style.display = 'none';
+                }
+              });
+            }
+        });
         
         const WLLayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/5?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
@@ -334,14 +617,135 @@
         });
 
         map.add(WLLayer);
+
+        const WaterSymbol = new SimpleLineSymbol({
+          type: "simple-line",
+          color: "blue",
+          width: 2,
+          cap = "square",
+          join = "round"
+        });
+
+        view.whenLayerView(WLLayer).then(function (layerView) {
+          const WaterRenderer = new SimpleRenderer({
+            type: "simple",
+            symbol: WaterSymbol
+          });
+       
+          view.on("pointer-move", eventHandler);
+  
+            let highlight;
+            const infoDiv = document.getElementById('infoDiv');
+  
+            function eventHandler(event) {
+              const screenPoint = {
+                x: event.x,
+                y: event.y
+              };
+
+              infoDiv.style.top = `${event.y + 10}px`;
+              infoDiv.style.left = `${event.x + 10}px`;
+  
+              view.hitTest(screenPoint, { tolerance: 10 }).then(function(response) {
+                if (response.results.length > 0) {
+                  const graphic = response.results[0].graphic;
+                  const featureID = graphic.attributes.FID;  // Use the FID attribute
+  
+                  if (featureID !== currentWLID) {
+                    currentWLID = featureID;
+  
+                    if (highlight) {
+                      highlight.remove();
+                      highlight = null;
+                    }
+  
+                    highlight = layerView.highlight(graphic);
+  
+                    infoDiv.innerHTML = 
+                      "<span style='font-size: 1.1em;'>Information</span><br><br>" +
+                      "Diameter (Inches): <b>" + graphic.attributes.Diameter_Inches + "</b><br>" +
+                      "Material: <b>" + graphic.attributes.Material_ + "</b><br>" +
+                      "Year Installed: <b>" + graphic.attributes.Year_ + "</b><br>" +
+                      "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
+                    
+                    infoDiv.style.display = 'block';
+                  }
+                } else {
+                  if (highlight) {
+                    highlight.remove();
+                    highlight = null;
+                  }
+                  currentWLID = null;
+                  
+                  infoDiv.style.display = 'none';
+                }
+              });
+            }
+        });
       
         const MHLayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/0?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
-          title: "Manhole Cover",
+          title: "Manhole",
           outFields: ["*"]
         });
 
         map.add(MHLayer);
+
+        view.whenLayerView(MHLayer).then(function (layerView) {
+       
+          view.on("pointer-move", eventHandler);
+  
+            let highlight;
+            const infoDiv = document.getElementById('infoDiv');
+  
+            function eventHandler(event) {
+              const screenPoint = {
+                x: event.x,
+                y: event.y
+              };
+
+              infoDiv.style.top = `${event.y + 10}px`;
+              infoDiv.style.left = `${event.x + 10}px`;
+  
+              view.hitTest(screenPoint, { tolerance: 10 }).then(function(response) {
+                if (response.results.length > 0) {
+                  const graphic = response.results[0].graphic;
+                  const featureID = graphic.attributes.FID;  // Use the FID attribute
+  
+                  if (featureID !== currentMHID) {
+                    currentMHID = featureID;
+  
+                    if (highlight) {
+                      highlight.remove();
+                      highlight = null;
+                    }
+  
+                    highlight = layerView.highlight(graphic);
+  
+                    infoDiv.innerHTML = 
+                      "<span style='font-size: 1.1em;'>Information</span><br><br>" +
+                      "Notes: <b>" + graphic.attributes.Notes + "</b><br>" +
+                      "Rim Elevation: <b>" + graphic.attributes.Rim_Elevat + "</b><br>" +
+                      "Manhole Size (Inches): <b>" + graphic.attributes.MH_Size + "</b><br>" +
+                      "Manhole Material: <b>" + graphic.attributes.MH_Material + "</b><br>" +
+                      "Drop Connection?: <b>" + graphic.attributes.Drop_Connection + "</b><br>" +
+                      "Location Type: <b>" + graphic.attributes.Location_Type + "</b><br>" +
+                      "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
+                    
+                    infoDiv.style.display = 'block';
+                  }
+                } else {
+                  if (highlight) {
+                    highlight.remove();
+                    highlight = null;
+                  }
+                  currentMHID = null;
+                  
+                  infoDiv.style.display = 'none';
+                }
+              });
+            }
+        });
       
         const WVLayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/1?&token=AAPK8c9b6bce800a48ae9a07f728c9472a61ELjEVN44hWTc-RpzxNvaV5fKrDIlzu9vdhyWVP0fInirGnZSM8UsHi0riCK2EMEq",
