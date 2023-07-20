@@ -5,7 +5,7 @@
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
   <title>City of Anna Utility Map</title>
 
-  <link rel="stylesheet" href="https://js.arcgis.com/4.22/esri/themes/light/main.css" />
+  <link rel="stylesheet" href="https://js.arcgis.com/4.17/esri/themes/light/main.css" />
 
   <style>
     html,
@@ -18,7 +18,7 @@
     }
     
     #infoDiv {
-      display: none !important;
+      display: none;
       position: fixed;
       top: 300px;
       right: 20px;
@@ -30,7 +30,7 @@
     }
   </style>
 
-  <script src="https://js.arcgis.com/4.22/"></script>
+  <script src="https://js.arcgis.com/4.17/"></script>
 
   <script>
     require([
@@ -135,6 +135,7 @@
       });
 
       esriId.registerOAuthInfos([info]);
+      
       const map = new WebMap({
         basemap: "arcgis-imagery",
       });
