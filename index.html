@@ -551,10 +551,12 @@
         });
         
         view.whenLayerView(SLLayer).then(function (layerView) {
-          const WaterRenderer = new SimpleRenderer({
+          const SewerRenderer = new SimpleRenderer({
             type: "simple",
             symbol: SewerSymbol
           });
+
+          SLLayer.renderer = SewerRenderer;
           
           view.on("pointer-move", eventHandler);
   
@@ -631,6 +633,8 @@
             type: "simple",
             symbol: WaterSymbol
           });
+
+          WLLayer.renderer = WaterRenderer;
        
           view.on("pointer-move", eventHandler);
   
