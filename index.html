@@ -181,66 +181,6 @@
           //cap: "square",
           //join: "round"
         //});
-        
-        view.whenLayerView(FMLayer).then(function (layerView) {
-          //const FMRenderer = new SimpleRenderer({
-            //type: "simple",
-            //symbol: FMSymbol
-          //});
-
-          //FMLayer.renderer = FMRenderer;
-          
-          view.on("pointer-move", eventHandler);
-  
-            let highlight;
-            const infoDiv = document.getElementById('infoDiv');
-  
-            function eventHandler(event) {
-              const screenPoint = {
-                x: event.x,
-                y: event.y
-              };
-
-              infoDiv.style.top = `${event.y + 10}px`;
-              infoDiv.style.left = `${event.x + 10}px`;
-  
-              view.hitTest(screenPoint, { tolerance: 10 }).then(function(response) {
-                if (response.results.length > 0) {
-                  const graphic = response.results[0].graphic;
-                  const featureID = graphic.attributes.AssetID;  // Use the AssetID attribute
-  
-                  if (featureID !== currentFMID) {
-                    currentFMID = featureID;
-  
-                    if (highlight) {
-                      highlight.remove();
-                      highlight = null;
-                    }
-  
-                    highlight = layerView.highlight(graphic);
-  
-                    infoDiv.innerHTML = 
-                      "<span style='font-size: 1.1em;'>Information</span><br><br>" +
-                      "Status: <b>" + graphic.attributes.Description + "</b><br>" +
-                      "Diameter (Inches): <b>" + graphic.attributes.Diameter + "</b><br>" +
-                      "Material: <b>" + graphic.attributes.Material + "</b><br>" +
-                      "Year Installed: <b>" + graphic.attributes.Year_Built + "</b><br>" +
-                      "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
-                    
-                    infoDiv.style.display = 'block';
-                  }
-                } else {
-                  if (highlight) {
-                    highlight.remove();
-                    highlight = null;
-                  }
-                  currentFMID = null;
-                  
-                  infoDiv.style.display = 'none';
-                }
-              });
-            }
-        });
       //});
       //view.when().then(function () { 
         const LSLayer = new FeatureLayer({
@@ -251,57 +191,7 @@
         
         map.add(LSLayer);
 
-        view.whenLayerView(LSLayer).then(function (layerView) {
-       
-          view.on("pointer-move", eventHandler);
-  
-            let highlight;
-            const infoDiv = document.getElementById('infoDiv');
-  
-            function eventHandler(event) {
-              const screenPoint = {
-                x: event.x,
-                y: event.y
-              };
-
-              infoDiv.style.top = `${event.y + 10}px`;
-              infoDiv.style.left = `${event.x + 10}px`;
-  
-              view.hitTest(screenPoint, { tolerance: 10 }).then(function(response) {
-                if (response.results.length > 0) {
-                  const graphic = response.results[0].graphic;
-                  const featureID = graphic.attributes.AssetID;  // Use the AssetID attribute
-  
-                  if (featureID !== currentLSID) {
-                    currentLSID = featureID;
-  
-                    if (highlight) {
-                      highlight.remove();
-                      highlight = null;
-                    }
-  
-                    highlight = layerView.highlight(graphic);
-  
-                    infoDiv.innerHTML = 
-                      "<span style='font-size: 1.1em;'>Information</span><br><br>" +
-                      "Status: <b>" + graphic.attributes.Future_Existing + "</b><br>" +
-                      "Facility Name: <b>" + graphic.attributes.Facility_Name + "</b><br>" +
-                      "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
-                    
-                    infoDiv.style.display = 'block';
-                  }
-                } else {
-                  if (highlight) {
-                    highlight.remove();
-                    highlight = null;
-                  }
-                  currentLSID = null;
-                  
-                  infoDiv.style.display = 'none';
-                }
-              });
-            }
-        });
+        
       //});  
       //view.when().then(function () {  
         const WTPLayer = new FeatureLayer({
@@ -312,57 +202,7 @@
 
         map.add(WTPLayer);
 
-        view.whenLayerView(WTPLayer).then(function (layerView) {
-       
-          view.on("pointer-move", eventHandler);
-  
-            let highlight;
-            const infoDiv = document.getElementById('infoDiv');
-  
-            function eventHandler(event) {
-              const screenPoint = {
-                x: event.x,
-                y: event.y
-              };
-
-              infoDiv.style.top = `${event.y + 10}px`;
-              infoDiv.style.left = `${event.x + 10}px`;
-  
-              view.hitTest(screenPoint, { tolerance: 10 }).then(function(response) {
-                if (response.results.length > 0) {
-                  const graphic = response.results[0].graphic;
-                  const featureID = graphic.attributes.AssetID;  // Use the AssetID attribute
-  
-                  if (featureID !== currentWTPID) {
-                    currentWTPID = featureID;
-  
-                    if (highlight) {
-                      highlight.remove();
-                      highlight = null;
-                    }
-  
-                    highlight = layerView.highlight(graphic);
-  
-                    infoDiv.innerHTML = 
-                      "<span style='font-size: 1.1em;'>Information</span><br><br>" +
-                      "Facility Name: <b>" + graphic.attributes.Facility_Name + "</b><br>" +
-                      "Capacity: <b>" + graphic.attributes.Capacity + "</b><br>" +
-                      "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
-                    
-                    infoDiv.style.display = 'block';
-                  }
-                } else {
-                  if (highlight) {
-                    highlight.remove();
-                    highlight = null;
-                  }
-                  currentWTPID = null;
-                  
-                  infoDiv.style.display = 'none';
-                }
-              });
-            }
-        });
+        
       //});
       //view.when().then(function () {
         const PSLayer = new FeatureLayer({
@@ -373,58 +213,7 @@
 
         map.add(PSLayer);
 
-        view.whenLayerView(PSLayer).then(function (layerView) {
        
-          view.on("pointer-move", eventHandler);
-  
-            let highlight;
-            const infoDiv = document.getElementById('infoDiv');
-  
-            function eventHandler(event) {
-              const screenPoint = {
-                x: event.x,
-                y: event.y
-              };
-
-              infoDiv.style.top = `${event.y + 10}px`;
-              infoDiv.style.left = `${event.x + 10}px`;
-  
-              view.hitTest(screenPoint, { tolerance: 10 }).then(function(response) {
-                if (response.results.length > 0) {
-                  const graphic = response.results[0].graphic;
-                  const featureID = graphic.attributes.AssetID;  // Use the AssetID attribute
-  
-                  if (featureID !== currentPSID) {
-                    currentPSID = featureID;
-  
-                    if (highlight) {
-                      highlight.remove();
-                      highlight = null;
-                    }
-  
-                    highlight = layerView.highlight(graphic);
-  
-                    infoDiv.innerHTML = 
-                      "<span style='font-size: 1.1em;'>Information</span><br><br>" +
-                      "Status: <b>" + graphic.attributes.Layer + "</b><br>" +
-                      "Facility Name: <b>" + graphic.attributes.Station_Name + "</b><br>" +
-                      "Pump Identifier: <b>" + graphic.attributes.Pump_Identifier + "</b><br>" +
-                      "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
-                    
-                    infoDiv.style.display = 'block';
-                  }
-                } else {
-                  if (highlight) {
-                    highlight.remove();
-                    highlight = null;
-                  }
-                  currentPSID = null;
-                  
-                  infoDiv.style.display = 'none';
-                }
-              });
-            }
-        });
       //});
       //view.when().then(function () {
         const WELayer = new FeatureLayer({
@@ -435,56 +224,7 @@
 
         map.add(WELayer);
 
-        view.whenLayerView(WELayer).then(function (layerView) {
-       
-          view.on("pointer-move", eventHandler);
-  
-            let highlight;
-            const infoDiv = document.getElementById('infoDiv');
-  
-            function eventHandler(event) {
-              const screenPoint = {
-                x: event.x,
-                y: event.y
-              };
-
-              infoDiv.style.top = `${event.y + 10}px`;
-              infoDiv.style.left = `${event.x + 10}px`;
-  
-              view.hitTest(screenPoint, { tolerance: 10 }).then(function(response) {
-                if (response.results.length > 0) {
-                  const graphic = response.results[0].graphic;
-                  const featureID = graphic.attributes.AssetID;  // Use the AssetID attribute
-  
-                  if (featureID !== currentWEID) {
-                    currentWEID = featureID;
-  
-                    if (highlight) {
-                      highlight.remove();
-                      highlight = null;
-                    }
-  
-                    highlight = layerView.highlight(graphic);
-  
-                    infoDiv.innerHTML = 
-                      "<span style='font-size: 1.1em;'>Information</span><br><br>" +
-                      "Well Name: <b>" + graphic.attributes.Well_Identifier + "</b><br>" +
-                      "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
-                    
-                    infoDiv.style.display = 'block';
-                  }
-                } else {
-                  if (highlight) {
-                    highlight.remove();
-                    highlight = null;
-                  }
-                  currentWEID = null;
-                  
-                  infoDiv.style.display = 'none';
-                }
-              });
-            }
-        });
+        
       //});
       //view.when().then(function () {
         const WSTLayer = new FeatureLayer({
@@ -495,57 +235,7 @@
 
         map.add(WSTLayer);
 
-        view.whenLayerView(WSTLayer).then(function (layerView) {
-       
-          view.on("pointer-move", eventHandler);
-  
-            let highlight;
-            const infoDiv = document.getElementById('infoDiv');
-  
-            function eventHandler(event) {
-              const screenPoint = {
-                x: event.x,
-                y: event.y
-              };
-
-              infoDiv.style.top = `${event.y + 10}px`;
-              infoDiv.style.left = `${event.x + 10}px`;
-  
-              view.hitTest(screenPoint, { tolerance: 10 }).then(function(response) {
-                if (response.results.length > 0) {
-                  const graphic = response.results[0].graphic;
-                  const featureID = graphic.attributes.AssetID;  // Use the AssetID attribute
-  
-                  if (featureID !== currentWSTID) {
-                    currentWSTID = featureID;
-  
-                    if (highlight) {
-                      highlight.remove();
-                      highlight = null;
-                    }
-  
-                    highlight = layerView.highlight(graphic);
-  
-                    infoDiv.innerHTML = 
-                      "<span style='font-size: 1.1em;'>Information</span><br><br>" +
-                      "Status: <b>" + graphic.attributes.Layer + "</b><br>" +
-                      "Tank Identifier: <b>" + graphic.attributes.Tank_Identifier + "</b><br>" +
-                      "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
-                    
-                    infoDiv.style.display = 'block';
-                  }
-                } else {
-                  if (highlight) {
-                    highlight.remove();
-                    highlight = null;
-                  }
-                  currentWSTID = null;
-                  
-                  infoDiv.style.display = 'none';
-                }
-              });
-            }
-        });
+        
       //});
       //view.when().then(function () {
         const SLLayer = new FeatureLayer({
@@ -556,80 +246,7 @@
 
         map.add(SLLayer);
         
-        //const SewerSymbol = new SimpleLineSymbol({
-          //type: "simple-line", 
-          //color: "green",
-          //width: 2,
-          //cap: "square",
-          //join: "round",
-          //marker: { // autocasts from LineSymbolMarker
-            //style: "arrow",
-            //color: "lightgreen",
-            //placement: "end"
-          //}
-        //});
         
-        view.whenLayerView(SLLayer).then(function (layerView) {
-          //const SewerRenderer = new SimpleRenderer({
-            //type: "simple",
-            //symbol: SewerSymbol
-          //});
-
-          //SLLayer.renderer = SewerRenderer;
-          
-          view.on("pointer-move", eventHandler);
-  
-            let highlight;
-            const infoDiv = document.getElementById('infoDiv');
-  
-            function eventHandler(event) {
-              const screenPoint = {
-                x: event.x,
-                y: event.y
-              };
-
-              infoDiv.style.top = `${event.y + 10}px`;
-              infoDiv.style.left = `${event.x + 10}px`;
-  
-              view.hitTest(screenPoint, { tolerance: 10 }).then(function(response) {
-                if (response.results.length > 0) {
-                  const graphic = response.results[0].graphic;
-                  const featureID = graphic.attributes.AssetID;  // Use the AssetID attribute
-  
-                  if (featureID !== currentSLID) {
-                    currentSLID = featureID;
-  
-                    if (highlight) {
-                      highlight.remove();
-                      highlight = null;
-                    }
-  
-                    highlight = layerView.highlight(graphic);
-  
-                    infoDiv.innerHTML = 
-                      "<span style='font-size: 1.1em;'>Information</span><br><br>" +
-                      "Notes: <b>" + graphic.attributes.Notes + "</b><br>" +
-                      "Diameter (Inches): <b>" + graphic.attributes.Diameter_ + "</b><br>" +
-                      "Material: <b>" + graphic.attributes.Material_ + "</b><br>" +
-                      "Year Installed: <b>" + (graphic.attributes.Year_Built || 'N/A') + "</b><br>" +
-                      "Upstream Invert Elevation: <b>" + graphic.attributes.FROM_INV + "</b><br>" +
-                      "Downstream Invert Elevation: <b>" + graphic.attributes.TO_INV + "</b><br>" +
-                      "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
-                    
-                    infoDiv.style.display = 'block';
-                  }
-                } else {
-                  if (highlight) {
-                    highlight.remove();
-                    highlight = null;
-                  }
-                  currentSLID = null;
-                  
-                  infoDiv.style.display = 'none';
-                }
-              });
-            }
-        });
       //});
       //view.when().then(function () {
         const WLLayer = new FeatureLayer({
@@ -640,72 +257,7 @@
 
         map.add(WLLayer);
 
-        //const WaterSymbol = new SimpleLineSymbol({
-          //type: "simple-line",
-          //color: "blue",
-          //width: 2,
-          //cap: "square",
-          //join: "round"
-        //});
-
-        view.whenLayerView(WLLayer).then(function (layerView) {
-          //const WaterRenderer = new SimpleRenderer({
-            //type: "simple",
-            //symbol: WaterSymbol
-          //});
-
-          //WLLayer.renderer = WaterRenderer;
-       
-          view.on("pointer-move", eventHandler);
-  
-            let highlight;
-            const infoDiv = document.getElementById('infoDiv');
-  
-            function eventHandler(event) {
-              const screenPoint = {
-                x: event.x,
-                y: event.y
-              };
-
-              infoDiv.style.top = `${event.y + 10}px`;
-              infoDiv.style.left = `${event.x + 10}px`;
-  
-              view.hitTest(screenPoint, { tolerance: 10 }).then(function(response) {
-                if (response.results.length > 0) {
-                  const graphic = response.results[0].graphic;
-                  const featureID = graphic.attributes.AssetID;  // Use the AssetID attribute
-  
-                  if (featureID !== currentWLID) {
-                    currentWLID = featureID;
-  
-                    if (highlight) {
-                      highlight.remove();
-                      highlight = null;
-                    }
-  
-                    highlight = layerView.highlight(graphic);
-  
-                    infoDiv.innerHTML = 
-                      "<span style='font-size: 1.1em;'>Information</span><br><br>" +
-                      "Diameter (Inches): <b>" + graphic.attributes.Diameter_Inches + "</b><br>" +
-                      "Material: <b>" + graphic.attributes.Material_ + "</b><br>" +
-                      "Year Installed: <b>" + graphic.attributes.Year_ + "</b><br>" +
-                      "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
-                    
-                    infoDiv.style.display = 'block';
-                  }
-                } else {
-                  if (highlight) {
-                    highlight.remove();
-                    highlight = null;
-                  }
-                  currentWLID = null;
-                  
-                  infoDiv.style.display = 'none';
-                }
-              });
-            }
-        });
+        
       //});
       //view.when().then(function () {
         const MHLayer = new FeatureLayer({
@@ -716,61 +268,7 @@
 
         map.add(MHLayer);
 
-        view.whenLayerView(MHLayer).then(function (layerView) {
-       
-          view.on("pointer-move", eventHandler);
-  
-            let highlight;
-            const infoDiv = document.getElementById('infoDiv');
-  
-            function eventHandler(event) {
-              const screenPoint = {
-                x: event.x,
-                y: event.y
-              };
-
-              infoDiv.style.top = `${event.y + 10}px`;
-              infoDiv.style.left = `${event.x + 10}px`;
-  
-              view.hitTest(screenPoint, { tolerance: 10 }).then(function(response) {
-                if (response.results.length > 0) {
-                  const graphic = response.results[0].graphic;
-                  const featureID = graphic.attributes.AssetID;  // Use the AssetID attribute
-  
-                  if (featureID !== currentMHID) {
-                    currentMHID = featureID;
-  
-                    if (highlight) {
-                      highlight.remove();
-                      highlight = null;
-                    }
-  
-                    highlight = layerView.highlight(graphic);
-  
-                    infoDiv.innerHTML = 
-                      "<span style='font-size: 1.1em;'>Information</span><br><br>" +
-                      "Notes: <b>" + graphic.attributes.Notes + "</b><br>" +
-                      "Rim Elevation: <b>" + graphic.attributes.Rim_Elevat + "</b><br>" +
-                      "Manhole Size (Inches): <b>" + graphic.attributes.MH_Size + "</b><br>" +
-                      "Manhole Material: <b>" + graphic.attributes.MH_Material + "</b><br>" +
-                      "Drop Connection?: <b>" + graphic.attributes.Drop_Connection + "</b><br>" +
-                      "Location Type: <b>" + graphic.attributes.Location_Type + "</b><br>" +
-                      "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
-                    
-                    infoDiv.style.display = 'block';
-                  }
-                } else {
-                  if (highlight) {
-                    highlight.remove();
-                    highlight = null;
-                  }
-                  currentMHID = null;
-                  
-                  infoDiv.style.display = 'none';
-                }
-              });
-            }
-        });
+        
       //});
       //view.when().then(function () {
         const WVLayer = new FeatureLayer({
@@ -781,56 +279,7 @@
 
         map.add(WVLayer);
 
-        view.whenLayerView(WVLayer).then(function (layerView) {
-       
-          view.on("pointer-move", eventHandler);
-  
-            let highlight;
-            const infoDiv = document.getElementById('infoDiv');
-  
-            function eventHandler(event) {
-              const screenPoint = {
-                x: event.x,
-                y: event.y
-              };
-
-              infoDiv.style.top = `${event.y + 10}px`;
-              infoDiv.style.left = `${event.x + 10}px`;
-  
-              view.hitTest(screenPoint, { tolerance: 10 }).then(function(response) {
-                if (response.results.length > 0) {
-                  const graphic = response.results[0].graphic;
-                  const featureID = graphic.attributes.AssetID;  // Use the AssetID attribute
-  
-                  if (featureID !== currentWVID) {
-                    currentWVID = featureID;
-  
-                    if (highlight) {
-                      highlight.remove();
-                      highlight = null;
-                    }
-  
-                    highlight = layerView.highlight(graphic);
-  
-                    infoDiv.innerHTML = 
-                      "<span style='font-size: 1.1em;'>Information</span><br><br>" +
-                      "Status: <b>" + graphic.attributes.ValveStatus + "</b><br>" +
-                      "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
-                    
-                    infoDiv.style.display = 'block';
-                  }
-                } else {
-                  if (highlight) {
-                    highlight.remove();
-                    highlight = null;
-                  }
-                  currentWVID = null;
-                  
-                  infoDiv.style.display = 'none';
-                }
-              });
-            }
-        });
+        
       //});
       //view.when().then(function () {
         const FHLayer = new FeatureLayer({
@@ -841,7 +290,7 @@
 
         map.add(FHLayer);
 
-        view.whenLayerView(FHLayer).then(function (layerView) {
+        view.whenLayerView(FMLayer, LSLayer, WTPLayer, PSLayer, WELayer, WSTLayer, SLLayer, WLLayer, MHLayer, WVLayer, FHLayer).then(function (layerView) {
        
           view.on("pointer-move", eventHandler);
   
