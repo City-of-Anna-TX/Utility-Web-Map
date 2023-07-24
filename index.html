@@ -484,8 +484,25 @@
           "top-right"  
         ); 
 
+        const editor = new Editor({
+          view: view,
+          layerInfos: [{
+            layer: WVLayer,
+            fieldConfig: [{
+            name: "ValveStatus",
+            label: "Edit Valve Status",
+            editable: true
+            }]
+          }]
+        });
+        
         view.ui.add(
           [
+            new Expand({
+              view: view,
+              content: editor,
+              expanded: true
+            })
             new Expand({
               view: view,
               content: new Bookmarks({ view: view }),
@@ -505,18 +522,7 @@
           ],
           "bottom-left"  
         );
-        const editor = new Editor({
-          view: view,
-          layerInfos: [{
-            layer: WVLayer,
-            fieldConfig: [{
-            name: "ValveStatus",
-            label: "Edit Valve Status",
-            editable: true
-            }]
-          }]
-        });
-        view.ui.add(editor, "top-left");
+        
     });
   </script>
 </head>
