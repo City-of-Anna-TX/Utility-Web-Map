@@ -177,6 +177,8 @@
       let WVLayerView = null;
       let FHLayerView = null;
 
+      view.on("pointer-move", eventHandler);
+      
       let highlight;
       const infoDiv = document.getElementById('infoDiv');
 
@@ -327,8 +329,6 @@
           }
         });
       }
-
-      view.on("pointer-move", eventHandler);
       
       view.when().then(function () {  
         const FMLayer = new FeatureLayer({
@@ -512,7 +512,7 @@
               group: "top-left"
             })
           ],
-          "top-left"  
+          "bottom-left"  
         );  
     });
   </script>
