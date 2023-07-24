@@ -189,11 +189,9 @@
         map.add(FMLayer);
 
         view.whenLayerView(FMLayer).then(function (layerView) {
-            FMLayerView = layerView;
-          });
-      });
-      
-      view.when().then(function () {    
+          FMLayerView = layerView;
+        });
+          
         const LSLayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/2?&token=5fdW51BcFgXZOsTYFRY_tEfAgj8ST5yDXgft8VxreRTczcmFltUHe7uG6GMMrBAfgO2CcA7c8CUSkTZREXdSz0Ae2Grvx-uFrzI1YpCkIUtBopB7CTd51-cnrCWFkP2FH8YxrPJuhjY7JcFldkHx9vCDvGyHb-eRsTtLzp-zKi3m2DmG0dNZG4TKlbJyPGNpiEStPvrD-om8WiUkYE9fGFwBphqZ6aSVtAB4lZwNg1TcDb2NYPikAN7-IsGJ6k6nwG9ZyAXiL7FGGWPgaNDYSKWHKt8RleLFQL2OAjWZLBgMKJdEqatxv1A7vtEkHo6CFbHTywdckl0OGmaCstszWQ..",
           title: "Lift Station",
@@ -203,11 +201,9 @@
         map.add(LSLayer);
 
         view.whenLayerView(LSLayer).then(function (layerView) {
-            LSLayerView = layerView;
-          });
-      });
-
-      view.when().then(function () {
+          LSLayerView = layerView;
+        });
+      
         const WTPLayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/1?&token=5fdW51BcFgXZOsTYFRY_tEfAgj8ST5yDXgft8VxreRTczcmFltUHe7uG6GMMrBAfgO2CcA7c8CUSkTZREXdSz0Ae2Grvx-uFrzI1YpCkIUtBopB7CTd51-cnrCWFkP2FH8YxrPJuhjY7JcFldkHx9vCDvGyHb-eRsTtLzp-zKi3m2DmG0dNZG4TKlbJyPGNpiEStPvrD-om8WiUkYE9fGFwBphqZ6aSVtAB4lZwNg1TcDb2NYPikAN7-IsGJ6k6nwG9ZyAXiL7FGGWPgaNDYSKWHKt8RleLFQL2OAjWZLBgMKJdEqatxv1A7vtEkHo6CFbHTywdckl0OGmaCstszWQ..",
           title: "Wastewater Treatment Plant",
@@ -217,11 +213,9 @@
         map.add(WTPLayer);
 
         view.whenLayerView(WTPLayer).then(function (layerView) {
-            WTPLayerView = layerView;
-          });
-      });
-
-      view.when().then(function () {
+          WTPLayerView = layerView;
+        });
+      
         const PSLayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/2?&token=5fdW51BcFgXZOsTYFRY_tEfAgj8ST5yDXgft8VxreRTczcmFltUHe7uG6GMMrBAfgO2CcA7c8CUSkTZREXdSz0Ae2Grvx-uFrzI1YpCkIUtBopB7CTd51-cnrCWFkP2FH8YxrPJuhjY7JcFldkHx9vCDvGyHb-eRsTtLzp-zKi3m2DmG0dNZG4TKlbJyPGNpiEStPvrD-om8WiUkYE9fGFwBphqZ6aSVtAB4lZwNg1TcDb2NYPikAN7-IsGJ6k6nwG9ZyAXiL7FGGWPgaNDYSKWHKt8RleLFQL2OAjWZLBgMKJdEqatxv1A7vtEkHo6CFbHTywdckl0OGmaCstszWQ..",
           title: "Pump Station",
@@ -231,11 +225,9 @@
         map.add(PSLayer);
 
         view.whenLayerView(PSLayer).then(function (layerView) {
-            PSLayerView = layerView;
-          });
-      });
-
-      view.when().then(function () {
+          PSLayerView = layerView;
+        });
+      
         const WELayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/4?&token=5fdW51BcFgXZOsTYFRY_tEfAgj8ST5yDXgft8VxreRTczcmFltUHe7uG6GMMrBAfgO2CcA7c8CUSkTZREXdSz0Ae2Grvx-uFrzI1YpCkIUtBopB7CTd51-cnrCWFkP2FH8YxrPJuhjY7JcFldkHx9vCDvGyHb-eRsTtLzp-zKi3m2DmG0dNZG4TKlbJyPGNpiEStPvrD-om8WiUkYE9fGFwBphqZ6aSVtAB4lZwNg1TcDb2NYPikAN7-IsGJ6k6nwG9ZyAXiL7FGGWPgaNDYSKWHKt8RleLFQL2OAjWZLBgMKJdEqatxv1A7vtEkHo6CFbHTywdckl0OGmaCstszWQ..",
           title: "Well",
@@ -245,11 +237,9 @@
         map.add(WELayer);
 
         view.whenLayerView(WELayer).then(function (layerView) {
-            WELayerView = layerView;
-          });
-      });
-
-      view.when().then(function () {
+          WELayerView = layerView;
+        });
+      
         const WSTLayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/3?&token=5fdW51BcFgXZOsTYFRY_tEfAgj8ST5yDXgft8VxreRTczcmFltUHe7uG6GMMrBAfgO2CcA7c8CUSkTZREXdSz0Ae2Grvx-uFrzI1YpCkIUtBopB7CTd51-cnrCWFkP2FH8YxrPJuhjY7JcFldkHx9vCDvGyHb-eRsTtLzp-zKi3m2DmG0dNZG4TKlbJyPGNpiEStPvrD-om8WiUkYE9fGFwBphqZ6aSVtAB4lZwNg1TcDb2NYPikAN7-IsGJ6k6nwG9ZyAXiL7FGGWPgaNDYSKWHKt8RleLFQL2OAjWZLBgMKJdEqatxv1A7vtEkHo6CFbHTywdckl0OGmaCstszWQ..",
           title: "Water Storage Tanks",
@@ -259,11 +249,9 @@
         map.add(WSTLayer);
 
         view.whenLayerView(WSTLayer).then(function (layerView) {
-            WSTLayerView = layerView;
-          });
-      });
+          WSTLayerView = layerView;
+        });
 
-      view.when().then(function () {
         const SLLayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/3?&token=5fdW51BcFgXZOsTYFRY_tEfAgj8ST5yDXgft8VxreRTczcmFltUHe7uG6GMMrBAfgO2CcA7c8CUSkTZREXdSz0Ae2Grvx-uFrzI1YpCkIUtBopB7CTd51-cnrCWFkP2FH8YxrPJuhjY7JcFldkHx9vCDvGyHb-eRsTtLzp-zKi3m2DmG0dNZG4TKlbJyPGNpiEStPvrD-om8WiUkYE9fGFwBphqZ6aSVtAB4lZwNg1TcDb2NYPikAN7-IsGJ6k6nwG9ZyAXiL7FGGWPgaNDYSKWHKt8RleLFQL2OAjWZLBgMKJdEqatxv1A7vtEkHo6CFbHTywdckl0OGmaCstszWQ..",
           title: "Sewer Line",
@@ -273,11 +261,9 @@
         map.add(SLLayer);
 
         view.whenLayerView(SLLayer).then(function (layerView) {
-            SLLayerView = layerView;
-          });
-      });
+          SLLayerView = layerView;
+        });
 
-      view.when().then(function () {
         const WLLayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/5?&token=5fdW51BcFgXZOsTYFRY_tEfAgj8ST5yDXgft8VxreRTczcmFltUHe7uG6GMMrBAfgO2CcA7c8CUSkTZREXdSz0Ae2Grvx-uFrzI1YpCkIUtBopB7CTd51-cnrCWFkP2FH8YxrPJuhjY7JcFldkHx9vCDvGyHb-eRsTtLzp-zKi3m2DmG0dNZG4TKlbJyPGNpiEStPvrD-om8WiUkYE9fGFwBphqZ6aSVtAB4lZwNg1TcDb2NYPikAN7-IsGJ6k6nwG9ZyAXiL7FGGWPgaNDYSKWHKt8RleLFQL2OAjWZLBgMKJdEqatxv1A7vtEkHo6CFbHTywdckl0OGmaCstszWQ..",
           title: "Water Line",
@@ -287,11 +273,9 @@
         map.add(WLLayer);
 
         view.whenLayerView(WLLayer).then(function (layerView) {
-            WLLayerView = layerView;
-          });
-      });
+          WLLayerView = layerView;
+        });
 
-      view.when().then(function () {
         const MHLayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/0?&token=5fdW51BcFgXZOsTYFRY_tEfAgj8ST5yDXgft8VxreRTczcmFltUHe7uG6GMMrBAfgO2CcA7c8CUSkTZREXdSz0Ae2Grvx-uFrzI1YpCkIUtBopB7CTd51-cnrCWFkP2FH8YxrPJuhjY7JcFldkHx9vCDvGyHb-eRsTtLzp-zKi3m2DmG0dNZG4TKlbJyPGNpiEStPvrD-om8WiUkYE9fGFwBphqZ6aSVtAB4lZwNg1TcDb2NYPikAN7-IsGJ6k6nwG9ZyAXiL7FGGWPgaNDYSKWHKt8RleLFQL2OAjWZLBgMKJdEqatxv1A7vtEkHo6CFbHTywdckl0OGmaCstszWQ..",
           title: "Manhole",
@@ -301,11 +285,9 @@
         map.add(MHLayer);
 
         view.whenLayerView(MHLayer).then(function (layerView) {
-            MHLayerView = layerView;
-          });
-      });
-
-      view.when().then(function () {
+          MHLayerView = layerView;
+        });
+      
         const WVLayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/1?&token=5fdW51BcFgXZOsTYFRY_tEfAgj8ST5yDXgft8VxreRTczcmFltUHe7uG6GMMrBAfgO2CcA7c8CUSkTZREXdSz0Ae2Grvx-uFrzI1YpCkIUtBopB7CTd51-cnrCWFkP2FH8YxrPJuhjY7JcFldkHx9vCDvGyHb-eRsTtLzp-zKi3m2DmG0dNZG4TKlbJyPGNpiEStPvrD-om8WiUkYE9fGFwBphqZ6aSVtAB4lZwNg1TcDb2NYPikAN7-IsGJ6k6nwG9ZyAXiL7FGGWPgaNDYSKWHKt8RleLFQL2OAjWZLBgMKJdEqatxv1A7vtEkHo6CFbHTywdckl0OGmaCstszWQ..",
           title: "Water Valve",
@@ -315,11 +297,9 @@
         map.add(WVLayer);
 
         view.whenLayerView(WVLayer).then(function (layerView) {
-            WVLayerView = layerView;
-          });
-      });
+          WVLayerView = layerView;
+        });
 
-      view.when().then(function () {
         const FHLayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/0?&token=5fdW51BcFgXZOsTYFRY_tEfAgj8ST5yDXgft8VxreRTczcmFltUHe7uG6GMMrBAfgO2CcA7c8CUSkTZREXdSz0Ae2Grvx-uFrzI1YpCkIUtBopB7CTd51-cnrCWFkP2FH8YxrPJuhjY7JcFldkHx9vCDvGyHb-eRsTtLzp-zKi3m2DmG0dNZG4TKlbJyPGNpiEStPvrD-om8WiUkYE9fGFwBphqZ6aSVtAB4lZwNg1TcDb2NYPikAN7-IsGJ6k6nwG9ZyAXiL7FGGWPgaNDYSKWHKt8RleLFQL2OAjWZLBgMKJdEqatxv1A7vtEkHo6CFbHTywdckl0OGmaCstszWQ..",
           title: "Fire Hydrant",
@@ -329,9 +309,9 @@
         map.add(FHLayer);
 
         view.whenLayerView(FHLayer).then(function (layerView) {
-            FHLayerView = layerView;
-          });
-      });
+          FHLayerView = layerView;
+        });
+      
 
       view.on("pointer-move", eventHandler);
       
@@ -485,7 +465,8 @@
           }
         });
       }
-
+    });
+        
         view.ui.add(
           [
             new Expand({
