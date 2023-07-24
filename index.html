@@ -327,7 +327,7 @@
         infoDiv.style.top = `${event.y + 10}px`;
         infoDiv.style.left = `${event.x + 10}px`;
 
-        view.hitTest(screenPoint, { tolerance: 1 }).then(function(response) {
+        view.hitTest(screenPoint, { tolerance: 10 }).then(function(response) {
           if (response.results.length > 0) {
             const graphic = response.results[0].graphic;
             const featureID = graphic.attributes.AssetID;  // Use the AssetID attribute
@@ -481,6 +481,17 @@
           ],
           "top-right"  
         ); 
+
+        view.ui.add(
+          [
+            new Expand({
+              view: view,
+              content: new Bookmarks({ view: view }),
+              group: "top-left"
+            })
+          ],
+          "top-left"  
+        );  
       
         view.ui.add(
           [
@@ -489,11 +500,6 @@
               content: new Legend({ view: view }),
               expanded: true
             }),
-            new Expand({
-              view: view,
-              content: new Bookmarks({ view: view }),
-              group: "top-left"
-            })
           ],
           "bottom-left"  
         );  
