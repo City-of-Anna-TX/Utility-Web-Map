@@ -55,6 +55,7 @@
       "esri/PopupTemplate",
       "esri/widgets/Popup",
       "esri/widgets/Search",
+      "esri/widgets/Editor",
       "dojo/domReady!"
     ], function (
       LayerList,
@@ -79,7 +80,8 @@
       Expand,
       PopupTemplate,
       Popup,
-      Search
+      Search,
+      Editor
     ) {
       //const api_key = "NTA2ZGIwNWEtMjhmYi00ZTY5LWJhN2QtN2IxZDNmOWMyY2E2"
       //const direction = 'Vert'; // Options: 'Vert', 'North', // Note: awaiting fix from esri to support E, W, S
@@ -502,7 +504,19 @@
             }),
           ],
           "bottom-left"  
-        );  
+        );
+        const editor = new Editor({
+          view: view,
+          layerInfos: [{
+            layer: WVLayer,
+            fieldConfig: [{
+            name: "ValveStatus",
+            label: "Edit Valve Status",
+            editable: true
+            }]
+          }]
+        });
+        view.ui.add(editor, "top-left");
     });
   </script>
 </head>
