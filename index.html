@@ -495,14 +495,11 @@
             }]
           }]
         });
-        
+
+        view.ui.add(editor, "bottom-right");
+      
         view.ui.add(
           [
-            new Expand({
-              view: view,
-              content: editor,
-              expanded: true
-            })
             new Expand({
               view: view,
               content: new Bookmarks({ view: view }),
