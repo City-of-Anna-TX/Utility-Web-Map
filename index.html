@@ -133,8 +133,6 @@
           //opacity: opacity,
           //blendMode: blend_mode,
       //});
-
-      let editConfigWVLayer;
       
       const info = new OAuthInfo({
         appId: "ZEMj4kGM6WypPkO1",
@@ -535,25 +533,20 @@
           ],
           "bottom-left"  
         );
-        view.map.layers.forEach((layer) => {
-            if (layer.title === "WVLayer") {
-              editConfigWVLayer = {
-                layer: layer,
-                formTemplate: {
-                  //autocastable to FormTemplate
-                  // Set it so that only one field displays within the form
-                  elements: [
-                    {
-                      // autocastable to FieldElement
-                      type: "field",
-                      fieldName: "ValveStatus",
-                      label: "Valve Status"
-                    }
-                  ]
+        view.when(() => {
+          // Set an edit configuration for WVLayer
+          let editConfigWVLayer = {
+            layer: WVLayer,
+            formTemplate: {
+              elements: [
+                {
+                  type: "field",
+                  fieldName: "ValveStatus",
+                  label: "Valve Status"
                 }
-              };
+              ]
             }
-          });
+          };
 
           // Create the Editor
           const editor = new Editor({
@@ -563,7 +556,8 @@
           });
 
           // Add widget to the view
-          view.ui.add(editor, "top-left");
+          view.ui.add(editor, "top-right");
+        });
         
     });
   </script>
