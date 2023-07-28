@@ -133,6 +133,8 @@
           //opacity: opacity,
           //blendMode: blend_mode,
       //});
+
+      let editConfigWVLayer;
       
       const info = new OAuthInfo({
         appId: "ZEMj4kGM6WypPkO1",
@@ -533,19 +535,35 @@
           ],
           "bottom-left"  
         );
-      const editor = new Editor({
-        view: view,
-        allowedWorkflows: ["update"],
-        layerInfos: [
-          {
-          layer: WVLayer, // pass in the feature layer,
-          type: "field",
-          fieldName: "ValveStatus",
-          label: "Valve Status"
-          }
-        ]
-      });
-      view.ui.add(editor, "top-left");
+        view.map.layers.forEach((layer) => {
+            if (layer.title === "WVLayer") {
+              editConfigWVLayer = {
+                layer: layer,
+                formTemplate: {
+                  //autocastable to FormTemplate
+                  // Set it so that only one field displays within the form
+                  elements: [
+                    {
+                      // autocastable to FieldElement
+                      type: "field",
+                      fieldName: "ValveStatus",
+                      label: "Valve Status"
+                    }
+                  ]
+                }
+              };
+            }
+          });
+
+          // Create the Editor
+          const editor = new Editor({
+            view: view,
+            // Pass in the configurations created above
+            layerInfos: [editConfigWVLayer]
+          });
+
+          // Add widget to the view
+          view.ui.add(editor, "top-left");
         
     });
   </script>
