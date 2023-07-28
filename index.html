@@ -54,7 +54,9 @@
       "esri/PopupTemplate",
       "esri/widgets/Popup",
       "esri/widgets/Search",
+      "esri/widgets/Editor/Workflow",
       "esri/widgets/Editor/UpdateWorkflow",
+      "esri/widgets/Editor/UpdateWorkflowData",
       "esri/widgets/Editor",
       "dojo/domReady!"
     ], function (
@@ -80,7 +82,9 @@
       PopupTemplate,
       Popup,
       Search,
+      Workflow,
       UpdateWorkflow,
+      UpdateWorkflowData,
       Editor
     ) {
       //const api_key = "NTA2ZGIwNWEtMjhmYi00ZTY5LWJhN2QtN2IxZDNmOWMyY2E2"
@@ -531,27 +535,16 @@
         );
       const editor = new Editor({
         view: view,
-        layerInfos: [{
+        allowedWorkflows: ["update"],
+        layerInfos: [
+          {
           layer: WVLayer, // pass in the feature layer,
-          formTemplate:  { // autocastable to FormTemplate
-            elements: [
-              { // autocastable to FieldElement
-                type: "field",
-                fieldName: "ValveStatus",
-                label: "Valve Status"
-              }
-            ]
-          },
-          enabled: false, 
-          addEnabled: false, 
-          updateEnabled: false, 
-          deleteEnabled: false, 
-          attributeUpdatesEnabled: true,
-          geometryUpdatesEnabled: false, 
-          attachmentsOnCreateEnabled: false, 
-          attachmentsOnUpdateEnabled: false 
-          }]
-        });
+          type: "field",
+          fieldName: "ValveStatus",
+          label: "Valve Status"
+          }
+        ]
+      });
       view.ui.add(
         [
           new Expand({
