@@ -527,6 +527,16 @@
           ],
           "bottom-left"  
         );
+      view.ui.add(
+        [
+          new Expand({
+            view: view,
+            content: new Editor({ view: view }),
+            expanded: true
+          }),
+        ]
+        "top-left"
+      );
         
     });
   </script>
