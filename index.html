@@ -370,109 +370,109 @@
               currentFMID = featureID;
               highlight = layerView.highlight(graphic);
               infoDiv.innerHTML = 
-                "<span style='font-size: 1.1em;'>Information</span><br><br>" +
-                "Status: <b>" + graphic.attributes.Description + "</b><br>" +
-                "Diameter (Inches): <b>" + graphic.attributes.Diameter + "</b><br>" +
-                "Material: <b>" + graphic.attributes.Material + "</b><br>" +
-                "Year Installed: <b>" + graphic.attributes.Year_Built + "</b><br>" +
+                "<b span style='font-size: 1.1em;'>Force Main</span></b><br><br>" +
+                "Status: <b>" + (graphic.attributes.Description || 'N/A') + "</b><br>" +
+                "Diameter (Inches): <b>" + (graphic.attributes.Diameter || 'N/A') + "</b><br>" +
+                "Material: <b>" + (graphic.attributes.Material || 'N/A') + "</b><br>" +
+                "Year Installed: <b>" + (graphic.attributes.Year_Built || 'N/A') + "</b><br>" +
                 "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === LSLayer) {
               layerView = LSLayerView;
               currentLSID = featureID;
               highlight = layerView.highlight(graphic);
               infoDiv.innerHTML = 
-                "<span style='font-size: 1.1em;'>Information</span><br><br>" +
-                "Status: <b>" + graphic.attributes.Future_Existing + "</b><br>" +
-                "Facility Name: <b>" + graphic.attributes.Facility_Name + "</b><br>" +
+                "<b span style='font-size: 1.1em;'>Lift Station</span></b><br><br>" +
+                "Status: <b>" + (graphic.attributes.Future_Existing || 'N/A') + "</b><br>" +
+                "Facility Name: <b>" + (graphic.attributes.Facility_Name || 'N/A') + "</b><br>" +
                 "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === WTPLayer) {
               layerView = WTPLayerView;
               currentWTPID = featureID;
               highlight = layerView.highlight(graphic);
               infoDiv.innerHTML = 
-                "<span style='font-size: 1.1em;'>Information</span><br><br>" +
-                "Facility Name: <b>" + graphic.attributes.Facility_Name + "</b><br>" +
-                "Capacity: <b>" + graphic.attributes.Capacity + "</b><br>" +
+                "<b span style='font-size: 1.1em;'>Wastewater Treatment Plant</span></b><br><br>" +
+                "Facility Name: <b>" + (graphic.attributes.Facility_Name || 'N/A') + "</b><br>" +
+                "Capacity: <b>" + (graphic.attributes.Capacity || 'N/A') + "</b><br>" +
                 "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === PSLayer) {
               layerView = PSLayerView;
               currentPSID = featureID;
               highlight = layerView.highlight(graphic);
               infoDiv.innerHTML = 
-                "<span style='font-size: 1.1em;'>Information</span><br><br>" +
-                "Status: <b>" + graphic.attributes.Layer + "</b><br>" +
-                "Facility Name: <b>" + graphic.attributes.Station_Name + "</b><br>" +
-                "Pump Identifier: <b>" + graphic.attributes.Pump_Identifier + "</b><br>" +
+                "<b span style='font-size: 1.1em;'>Pump Station</span></b><br><br>" +
+                "Status: <b>" + (graphic.attributes.Layer || 'N/A') + "</b><br>" +
+                "Facility Name: <b>" + (graphic.attributes.Station_Name || 'N/A') + "</b><br>" +
+                "Pump Identifier: <b>" + (graphic.attributes.Pump_Identifier || 'N/A') + "</b><br>" +
                 "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === WELayer) {
               layerView = WELayerView;
               currentWEID = featureID;
               highlight = layerView.highlight(graphic);
               infoDiv.innerHTML = 
-                "<span style='font-size: 1.1em;'>Information</span><br><br>" +
-                "Well Name: <b>" + graphic.attributes.Well_Identifier + "</b><br>" +
+                "<b span style='font-size: 1.1em;'>Well</span></b><br><br>" +
+                "Well Name: <b>" + (graphic.attributes.Well_Identifier || 'N/A') + "</b><br>" +
                 "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === WSTLayer) {
               layerView = WSTLayerView;
               currentWSTID = featureID;
               infoDiv.innerHTML = 
-                "<span style='font-size: 1.1em;'>Information</span><br><br>" +
-                "Status: <b>" + graphic.attributes.Layer + "</b><br>" +
-                "Tank Identifier: <b>" + graphic.attributes.Tank_Identifier + "</b><br>" +
+                "<b span style='font-size: 1.1em;'>Water Storage Tank</span></b><br><br>" +
+                "Status: <b>" + (graphic.attributes.Layer || 'N/A') + "</b><br>" +
+                "Tank Identifier: <b>" + (graphic.attributes.Tank_Identifier || 'N/A') + "</b><br>" +
                 "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === SLLayer) {
               layerView = SLLayerView;
               currentSLID = featureID;
               highlight = layerView.highlight(graphic); 
               infoDiv.innerHTML = 
-                "<span style='font-size: 1.1em;'>Information</span><br><br>" +
-                "Diameter (Inches): <b>" + graphic.attributes.Diameter_ + "</b><br>" +
-                "Material: <b>" + graphic.attributes.Material_ + "</b><br>" +
+                "<b span style='font-size: 1.1em;'>Sewer Line</span></b><br><br>" +
+                "Diameter (Inches): <b>" + (graphic.attributes.Diameter_ || 'N/A') + "</b><br>" +
+                "Material: <b>" + (graphic.attributes.Material_ || 'N/A') + "</b><br>" +
                 "Year Installed: <b>" + (graphic.attributes.Year_Built || 'N/A') + "</b><br>" +
-                "Upstream Invert Elevation: <b>" + graphic.attributes.FROM_INV + "</b><br>" +
-                "Downstream Invert Elevation: <b>" + graphic.attributes.TO_INV + "</b><br>" +
+                "Upstream Invert Elevation: <b>" + (graphic.attributes.FROM_INV || 'N/A') + "</b><br>" +
+                "Downstream Invert Elevation: <b>" + (graphic.attributes.TO_INV || 'N/A') + "</b><br>" +
                 "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === WLLayer) {
               layerView = WLLayerView;
               currentWLID = featureID;
               highlight = layerView.highlight(graphic); 
               infoDiv.innerHTML = 
-                "<span style='font-size: 1.1em;'>Information</span><br><br>" +
-                "Diameter (Inches): <b>" + graphic.attributes.Diameter_Inches + "</b><br>" +
-                "Material: <b>" + graphic.attributes.Material_ + "</b><br>" +
-                "Year Installed: <b>" + graphic.attributes.Year_ + "</b><br>" +
+                "<b span style='font-size: 1.1em;'>Water Line</span></b><br><br>" +
+                "Diameter (Inches): <b>" + (graphic.attributes.Diameter_Inches || 'N/A') + "</b><br>" +
+                "Material: <b>" + (graphic.attributes.Material_ || 'N/A') + "</b><br>" +
+                "Year Installed: <b>" + (graphic.attributes.Year_ || 'N/A') + "</b><br>" +
                 "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === MHLayer) {
               layerView = MHLayerView;
               currentMHID = featureID;
               highlight = layerView.highlight(graphic); 
               infoDiv.innerHTML = 
-                "<span style='font-size: 1.1em;'>Information</span><br><br>" +
-                "Notes: <b>" + graphic.attributes.Notes + "</b><br>" +
-                "Rim Elevation: <b>" + graphic.attributes.Rim_Elevat + "</b><br>" +
-                "Manhole Size (Inches): <b>" + graphic.attributes.MH_Size + "</b><br>" +
-                "Manhole Material: <b>" + graphic.attributes.MH_Material + "</b><br>" +
-                "Drop Connection?: <b>" + graphic.attributes.Drop_Connection + "</b><br>" +
-                "Location Type: <b>" + graphic.attributes.Location_Type + "</b><br>" +
+                "<b span style='font-size: 1.1em;'>Manhole</span></b><br><br>" +
+                "Notes: <b>" + (graphic.attributes.Notes || 'N/A') + "</b><br>" +
+                "Rim Elevation: <b>" + (graphic.attributes.Rim_Elevat || 'N/A') + "</b><br>" +
+                "Manhole Size (Inches): <b>" + (graphic.attributes.MH_Size || 'N/A') + "</b><br>" +
+                "Manhole Material: <b>" + (graphic.attributes.MH_Material || 'N/A') + "</b><br>" +
+                "Drop Connection?: <b>" + (graphic.attributes.Drop_Connection || 'N/A') + "</b><br>" +
+                "Location Type: <b>" + (graphic.attributes.Location_Type || 'N/A') + "</b><br>" +
                 "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === WVLayer) {
               layerView = WVLayerView;
               currentWVID = featureID;
               highlight = layerView.highlight(graphic);
               infoDiv.innerHTML = 
-                "<span style='font-size: 1.1em;'>Information</span><br><br>" +
-                "Status: <b>" + graphic.attributes.ValveStatus + "</b><br>" +
+                "<b span style='font-size: 1.1em;'>Water Valve</span></b><br><br>" +
+                "Status: <b>" + (graphic.attributes.ValveStatus || 'N/A') + "</b><br>" +
                 "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === FHLayer) {
               layerView = FHLayerView;
               currentFHID = featureID;
               highlight = layerView.highlight(graphic);
               infoDiv.innerHTML = 
-                "<span style='font-size: 1.2em;'>Information</span><br><br>" +
-                "Status: <b>" + graphic.attributes.Status + "</b><br>" +
-                "Location: <b>" + graphic.attributes.Location + "</b><br>" +
-                "District: <b>" + graphic.attributes.District + "</b><br>" +
-                "Year Installed: <b>" + graphic.attributes.Year_ + "</b><br>" +
+                "<b span style='font-size: 1.2em;'>Fire Hydrant</span></b><br><br>" +
+                "Status: <b>" + (graphic.attributes.Status || 'N/A') + "</b><br>" +
+                "Location: <b>" + (graphic.attributes.Location || 'N/A') + "</b><br>" +
+                "District: <b>" + (graphic.attributes.District || 'N/A') + "</b><br>" +
+                "Year Installed: <b>" + (graphic.attributes.Year_ || 'N/A') + "</b><br>" +
                 "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
             }
 
