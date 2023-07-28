@@ -332,6 +332,33 @@
             const graphic = response.results[0].graphic;
             const featureID = graphic.attributes.AssetID;  // Use the AssetID attribute
 
+            if (graphic.layer === FMLayer && featureID !== currentFMID) {
+        	    currentFMID = featureID;
+      		  } else if (graphic.layer === LSLayer && featureID !== currentLSID) {
+        	    currentLSID = featureID;
+            } else if (graphic.layer === WTPLayer && featureID !== currentWTPID) {
+        	    currentWTPID = featureID;
+            } else if (graphic.layer === PSLayer && featureID !== currentPSID) {
+        	    currentPSID = featureID;
+            } else if (graphic.layer === WELayer && featureID !== currentWEID) {
+        	    currentWEID = featureID;
+            } else if (graphic.layer === WSTLayer && featureID !== currentWSTID) {
+        	    currentWSTID = featureID;
+            } else if (graphic.layer === SLLayer && featureID !== currentSLID) {
+        	    currentSLID = featureID;
+            } else if (graphic.layer === WLLayer && featureID !== currentWLID) {
+        	    currentWLID = featureID;
+            } else if (graphic.layer === MHLayer && featureID !== currentMHID) {
+        	    currentMHID = featureID;
+            } else if (graphic.layer === WVLayer && featureID !== currentWVID) {
+        	    currentWVID = featureID;
+            } else if (graphic.layer === FHLayer && featureID !== currentFHID) {
+        	    currentFHID = featureID;
+      		  } else {
+            // The feature under the mouse is the same as the last highlighted feature, so return
+              return;
+            }
+            
             if (highlight) {
               highlight.remove();
               highlight = null;
