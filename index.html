@@ -553,19 +553,19 @@
         
         const editor = new Editor({
           view: view,
-          //allowedWorkflows: ["update"],
-          layerInfos: [{
-            layer: WVLayer, // pass in the feature layer,
-            formTemplate:  { // autocastable to FormTemplate
-              elements: [
-                { // autocastable to FieldElement
-                  type: "field",
-                  fieldName: "ValveStatus",
-                  label: "Valve Status"
-                }
-              ]
-            },
-          }]
+          allowedWorkflows: ["update"],
+          //layerInfos: [{
+            //layer: WVLayer, // pass in the feature layer,
+            //formTemplate:  { // autocastable to FormTemplate
+              //elements: [
+                //{ // autocastable to FieldElement
+                  //type: "field",
+                  //fieldName: "ValveStatus",
+                  //label: "Valve Status"
+                //}
+              //]
+            //},
+          //}]
         });
 
         view.ui.add(
