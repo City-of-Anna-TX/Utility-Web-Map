@@ -554,6 +554,15 @@
         const editor = new Editor({
           view: view,
           allowedWorkflows: ["update"],
+          layerInfos: [{
+            enabled: true,
+            addEnabled: false,
+            updateEnabled: true,
+            deleteEnabled: false,
+            attributeUpdatesEnabled: true,
+            geometryUpdatesEnabled: false,
+            attachmentsOnCreateEnabled: false,
+            attachmentsOnUpdateEnabled: false
           //layerInfos: [{
             //layer: WVLayer, // pass in the feature layer,
             //formTemplate:  { // autocastable to FormTemplate
@@ -565,7 +574,7 @@
                 //}
               //]
             //},
-          //}]
+          }]
         });
 
         view.ui.add(
