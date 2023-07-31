@@ -547,7 +547,7 @@
         
         const editor = new Editor({
           view: view,
-          //allowedWorkflows: ["update"],
+          allowedWorkflows: ["update"],
           layerInfos: [{
             layer: WVLayer, // pass in the feature layer,
             formTemplate:  { // autocastable to FormTemplate
@@ -559,14 +559,6 @@
                 }
               ]
             },
-            enabled: true, 
-            addEnabled: false, 
-            updateEnabled: true, 
-            deleteEnabled: false,
-            attributeUpdatesEnabled: false, 
-            geometryUpdatesEnabled: false, 
-            attachmentsOnCreateEnabled: false, 
-            attachmentsOnUpdateEnabled: false 
           }]
         });
 
