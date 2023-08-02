@@ -61,6 +61,7 @@
       "esri/widgets/FeatureForm",
       "esri/form/FormTemplate",
       "esri/form/elements/FieldElement",
+      "esri/layers/GroupLayer",
       "dojo/domReady!"
     ], function (
       LayerList,
@@ -91,7 +92,8 @@
       Editor,
       FeatureForm,
       FormTemplate,
-      FieldElement
+      FieldElement,
+      GroupLayer
     ) {
       //const api_key = "NTA2ZGIwNWEtMjhmYi00ZTY5LWJhN2QtN2IxZDNmOWMyY2E2"
       //const direction = 'Vert'; // Options: 'Vert', 'North', // Note: awaiting fix from esri to support E, W, S
@@ -334,7 +336,22 @@
         view.whenLayerView(FHLayer).then(function (layerView) {
           FHLayerView = layerView;
         });
-      
+
+        const SewerLayer = new GroupLayer({
+          title: "Sewer System",
+          visible: true,
+          visibilityMode: "inherited",
+          layers: [FMLayer, LSLayer, WTPLayer, SLLayer, MHLayer],
+          listMode: "show"
+        }),
+
+        const WaterLayer = new GroupLayer({
+          title: "Water System",
+          visible: true,
+          visibilityMode: "inherited",
+          layers: [PSLayer, WELayer, WSTLayer, WLLayer, WVLayer, FHLayer],
+          listMode: "show"
+        }),  
 
       view.on("pointer-move", eventHandler);
       view.on("pointer-down", eventHandler);
