@@ -343,7 +343,7 @@
           visibilityMode: "inherited",
           layers: [FMLayer, LSLayer, WTPLayer, SLLayer, MHLayer],
           listMode: "show"
-        }),
+        });
 
         const WaterLayer = new GroupLayer({
           title: "Water System",
@@ -351,7 +351,7 @@
           visibilityMode: "inherited",
           layers: [PSLayer, WELayer, WSTLayer, WLLayer, WVLayer, FHLayer],
           listMode: "show"
-        }),  
+        });  
 
       view.on("pointer-move", eventHandler);
       view.on("pointer-down", eventHandler);
