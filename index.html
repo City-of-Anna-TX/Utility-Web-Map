@@ -574,16 +574,17 @@
         
         const editor = new Editor({
           view: view,
-          //allowedWorkflows: ["update"],
-          layerInfos: [{
-            enabled: true,
-            addEnabled: false,
-            updateEnabled: true,
-            deleteEnabled: false,
-            attributeUpdatesEnabled: false,
-            geometryUpdatesEnabled: false,
-            attachmentsOnCreateEnabled: false,
-            attachmentsOnUpdateEnabled: false,
+          allowedWorkflows: ["update"],
+          layerInfos: [
+            {
+            //enabled: true,
+            //addEnabled: false,
+            //updateEnabled: true,
+            //deleteEnabled: false,
+            //attributeUpdatesEnabled: false,
+            //geometryUpdatesEnabled: false,
+            //attachmentsOnCreateEnabled: false,
+            //attachmentsOnUpdateEnabled: false,
           //layerInfos: [{
             //layer: WVLayer, // pass in the feature layer,
             formTemplate:  { // autocastable to FormTemplate
@@ -595,7 +596,8 @@
                 }
               ]
             },
-          }]
+           }
+          ]
         });
 
         view.ui.add(
