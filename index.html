@@ -375,6 +375,18 @@
           ]
         });
 
+        editor.visibleElements = {
+          sketchTooltipControls: false,
+          snappingControls: false,
+          snappingControlsElements: {
+            header: false,
+            enabledToggle: false,
+            selfEnabledToggle: false,
+            featureEnabledToggle: false, // removes "Feature to feature" toggle
+            layerList: false // removes Snapping layers list
+          }
+        };
+
         view.ui.add(
           [
             new Expand({
