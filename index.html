@@ -562,18 +562,18 @@
             attributeUpdatesEnabled: true,
             geometryUpdatesEnabled: false,
             attachmentsOnCreateEnabled: false,
-            attachmentsOnUpdateEnabled: false
+            attachmentsOnUpdateEnabled: false,
           //layerInfos: [{
             //layer: WVLayer, // pass in the feature layer,
-            //formTemplate:  { // autocastable to FormTemplate
-              //elements: [
-                //{ // autocastable to FieldElement
-                  //type: "field",
-                  //fieldName: "ValveStatus",
-                  //label: "Valve Status"
-                //}
-              //]
-            //},
+            formTemplate:  { // autocastable to FormTemplate
+              elements: [
+                { // autocastable to FieldElement
+                  type: "field",
+                  fieldName: "ValveStatus",
+                  label: "Valve Status"
+                }
+              ]
+            },
           }]
         });
 
