@@ -89,11 +89,11 @@
       Workflow,
       UpdateWorkflow,
       UpdateWorkflowData,
+      GroupLayer,
       Editor,
       FeatureForm,
       FormTemplate,
-      FieldElement,
-      GroupLayer
+      FieldElement
     ) {
       //const api_key = "NTA2ZGIwNWEtMjhmYi00ZTY5LWJhN2QtN2IxZDNmOWMyY2E2"
       //const direction = 'Vert'; // Options: 'Vert', 'North', // Note: awaiting fix from esri to support E, W, S
@@ -345,6 +345,8 @@
           listMode: "show"
         });
 
+        map.add(SewerLayer);
+        
         const WaterLayer = new GroupLayer({
           title: "Water System",
           visible: true,
@@ -352,6 +354,8 @@
           layers: [PSLayer, WELayer, WSTLayer, WLLayer, WVLayer, FHLayer],
           listMode: "show"
         });  
+
+        map.add(WaterLayer);
 
       view.on("pointer-move", eventHandler);
       view.on("pointer-down", eventHandler);
