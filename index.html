@@ -357,6 +357,36 @@
 
         map.add(WaterLayer);
 
+        const editor = new Editor({
+          view: view,
+          allowedWorkflows: ["update"],
+          layerInfos: [
+            {
+            layer: WVLayer,
+            formTemplate:  { // autocastable to FormTemplate
+              elements: [
+                { // autocastable to FieldElement
+                  type: "field",
+                  fieldName: "ValveStatus",
+                  label: "Valve Status"
+                }
+              ]
+            },
+           }
+          ]
+        });
+
+        view.ui.add(
+          [
+            new Expand({
+              view: view,
+              content: editor,
+              expanded: false
+            }),
+          ],
+          "top-left"  
+        );
+
       view.on("pointer-move", eventHandler);
       view.on("pointer-down", eventHandler);
       
@@ -571,36 +601,7 @@
           ],
           "bottom-left"  
         );
-        
-        const editor = new Editor({
-          view: view,
-          allowedWorkflows: ["update"],
-          layerInfos: [
-            {
-            layer: WVLayer,
-            formTemplate:  { // autocastable to FormTemplate
-              elements: [
-                { // autocastable to FieldElement
-                  type: "field",
-                  fieldName: "ValveStatus",
-                  label: "Valve Status"
-                }
-              ]
-            },
-           }
-          ]
-        });
-
-        view.ui.add(
-          [
-            new Expand({
-              view: view,
-              content: editor,
-              expanded: false
-            }),
-          ],
-          "top-left"  
-        );
+                
     });
   </script>
 </head>
