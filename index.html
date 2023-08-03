@@ -198,7 +198,6 @@
       view.when().then(function () {  
 
         const FMSymbol = new SimpleLineSymbol({
-          type: "simple-line",
           color: "orange",
           width: 2,
           cap: "square",
@@ -206,9 +205,9 @@
         });
 
         const FMRenderer = new SimpleRenderer({
-            type: "simple",
-            symbol: FMSymbol
-          });
+          type: "simple",
+          symbol: FMSymbol
+        });
         
         const FMLayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/4?&token=5fdW51BcFgXZOsTYFRY_tEfAgj8ST5yDXgft8VxreRTczcmFltUHe7uG6GMMrBAfgO2CcA7c8CUSkTZREXdSz0Ae2Grvx-uFrzI1YpCkIUtBopB7CTd51-cnrCWFkP2FH8YxrPJuhjY7JcFldkHx9vCDvGyHb-eRsTtLzp-zKi3m2DmG0dNZG4TKlbJyPGNpiEStPvrD-om8WiUkYE9fGFwBphqZ6aSVtAB4lZwNg1TcDb2NYPikAN7-IsGJ6k6nwG9ZyAXiL7FGGWPgaNDYSKWHKt8RleLFQL2OAjWZLBgMKJdEqatxv1A7vtEkHo6CFbHTywdckl0OGmaCstszWQ..",
