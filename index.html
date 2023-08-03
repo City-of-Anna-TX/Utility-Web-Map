@@ -578,13 +578,19 @@
         });
       }
     });
-        
+
         view.ui.add(
           [
             new Expand({
               view: view,
               content: new Search({ view: view })
             }),
+          ],
+          "top-right"
+        );
+      
+        view.ui.add(
+          [
             new Expand({
               view: view,
               content: new LayerList({ view: view }),
