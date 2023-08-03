@@ -48,7 +48,7 @@
       "esri/layers/FeatureLayer",
       "esri/layers/GroupLayer",
       "esri/renderers/UniqueValueRenderer",
-      "esri/symbols/SimpleMarkerSymbol",
+      "esri/symbols/PictureMarkerSymbol",
       "esri/symbols/LineSymbolMarker",
       "esri/widgets/Legend",
       "esri/widgets/Expand",
@@ -81,7 +81,7 @@
       GroupLayer,
       UniqueValueRenderer,
       LineSymbolMarker,
-      SimpleMarkerSymbol,
+      PictureMarkerSymbol,
       Legend,
       Expand,
       PopupTemplate,
@@ -310,23 +310,17 @@
         });
 
         const closedValveSymbol = {
-          type: "simple-marker",
-          style: "x",
-          size: "14px",
-          outline: {
-            color: "red",
-            width: 1
-          }
+          type: "picture-marker",  // autocasts as new PictureMarkerSymbol()
+          url: "https://github.com/City-of-Anna-TX/Utility-Web-Map/blob/main/WaterValveClosed.png",
+          width: "12px",
+          height: "12px"
         };
 
         const defaultValveSymbol = {
-          type: "simple-marker",
-          color: "white", // Default color
-          size: "10px",
-          outline: {
-            color: "black",
-            width: 1
-          }
+          type: "picture-marker",  // autocasts as new PictureMarkerSymbol()
+          url: "https://github.com/City-of-Anna-TX/Utility-Web-Map/blob/main/WaterValveOpen.png",
+          width: "12px",
+          height: "12px"
         };
 
         const valveRenderer = {
