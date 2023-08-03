@@ -199,7 +199,7 @@
 
         const FMSymbol = {
           type: "simple-line",
-          color: "orange",
+          color: [255, 165, 0, 0.8],
           width: 4,
           cap: "square",
           join: "round"
@@ -291,7 +291,7 @@
 
         const SLSymbol = {
           type: "simple-line",
-          color: "green",
+          color: [50, 205, 50, 0.8],
           width: 4,
           cap: "square",
           join: "round"
@@ -299,7 +299,7 @@
 
         const SLRenderer = {
           type: "simple",
-          symbol: FMSymbol
+          symbol: SLSymbol
         };
         
         const SLLayer = new FeatureLayer({
@@ -318,7 +318,7 @@
 
         const WLSymbol = {
           type: "simple-line",
-          color: "blue",
+          color: [30, 144, 255, 0.8],
           width: 4,
           cap: "square",
           join: "round"
@@ -326,7 +326,7 @@
 
         const WLRenderer = {
           type: "simple",
-          symbol: FMSymbol
+          symbol: WLSymbol
         };
         
         const WLLayer = new FeatureLayer({
