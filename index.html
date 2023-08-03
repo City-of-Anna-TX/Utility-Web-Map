@@ -289,9 +289,23 @@
           WSTLayerView = layerView;
         });
 
+        const SLSymbol = {
+          type: "simple-line",
+          color: "green",
+          width: 4,
+          cap: "square",
+          join: "round"
+        };
+
+        const SLRenderer = {
+          type: "simple",
+          symbol: FMSymbol
+        };
+        
         const SLLayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Sewer_Data/FeatureServer/3?&token=5fdW51BcFgXZOsTYFRY_tEfAgj8ST5yDXgft8VxreRTczcmFltUHe7uG6GMMrBAfgO2CcA7c8CUSkTZREXdSz0Ae2Grvx-uFrzI1YpCkIUtBopB7CTd51-cnrCWFkP2FH8YxrPJuhjY7JcFldkHx9vCDvGyHb-eRsTtLzp-zKi3m2DmG0dNZG4TKlbJyPGNpiEStPvrD-om8WiUkYE9fGFwBphqZ6aSVtAB4lZwNg1TcDb2NYPikAN7-IsGJ6k6nwG9ZyAXiL7FGGWPgaNDYSKWHKt8RleLFQL2OAjWZLBgMKJdEqatxv1A7vtEkHo6CFbHTywdckl0OGmaCstszWQ..",
           title: "Sewer Line",
+          renderer: SLRenderer,
           editingEnabled: false,
           outFields: ["*"]
         });
@@ -302,9 +316,23 @@
           SLLayerView = layerView;
         });
 
+        const WLSymbol = {
+          type: "simple-line",
+          color: "blue",
+          width: 4,
+          cap: "square",
+          join: "round"
+        };
+
+        const WLRenderer = {
+          type: "simple",
+          symbol: FMSymbol
+        };
+        
         const WLLayer = new FeatureLayer({
           url: "https://services5.arcgis.com/DvFgDXTY4DS4ZXFx/arcgis/rest/services/Water_Data/FeatureServer/5?&token=5fdW51BcFgXZOsTYFRY_tEfAgj8ST5yDXgft8VxreRTczcmFltUHe7uG6GMMrBAfgO2CcA7c8CUSkTZREXdSz0Ae2Grvx-uFrzI1YpCkIUtBopB7CTd51-cnrCWFkP2FH8YxrPJuhjY7JcFldkHx9vCDvGyHb-eRsTtLzp-zKi3m2DmG0dNZG4TKlbJyPGNpiEStPvrD-om8WiUkYE9fGFwBphqZ6aSVtAB4lZwNg1TcDb2NYPikAN7-IsGJ6k6nwG9ZyAXiL7FGGWPgaNDYSKWHKt8RleLFQL2OAjWZLBgMKJdEqatxv1A7vtEkHo6CFbHTywdckl0OGmaCstszWQ..",
           title: "Water Line",
+          renderer: WLRenderer,
           editingEnabled: false,
           outFields: ["*"]
         });
