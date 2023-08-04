@@ -154,7 +154,11 @@
           opacity: opacity,
           blendMode: blend_mode,
       });
-      
+
+      const map = new Map({
+          basemap: "topo-vector",
+          ground: "world-elevation",
+      });
       //const map = new WebMap({
         //basemap: "arcgis-imagery",
       //});
