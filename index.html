@@ -99,6 +99,15 @@
       FormTemplate,
       FieldElement
     ) {
+    
+      const info = new OAuthInfo({
+        appId: "ZEMj4kGM6WypPkO1",
+        flowType: "auto",
+        popup: false
+      });
+
+      esriId.registerOAuthInfos([info]);
+
       const api_key = "NTA2ZGIwNWEtMjhmYi00ZTY5LWJhN2QtN2IxZDNmOWMyY2E2"
       const direction = 'Vert'; // Options: 'Vert', 'North', // Note: awaiting fix from esri to support E, W, S
       const origin = [-96.5482347, 33.3487803];  // [Lat, Lon] for Location: ex: Austin, TX
@@ -146,18 +155,12 @@
           blendMode: blend_mode,
       });
       
-      const info = new OAuthInfo({
-        appId: "ZEMj4kGM6WypPkO1",
-        flowType: "auto",
-        popup: false
-      });
-
-      esriId.registerOAuthInfos([info]);
-      
       //const map = new WebMap({
         //basemap: "arcgis-imagery",
       //});
-
+      
+      map.add(nearmap_wt1);
+      
       const view = new MapView({
         container: "viewDiv",
         zoom: 13,
@@ -168,8 +171,6 @@
           color: [50, 50, 50]
         }
       });
-
-      map.add(nearmap_wt1);
       
       let currentFMID = null;
       let currentLSID = null;
