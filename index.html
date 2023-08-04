@@ -281,9 +281,51 @@
           join: "round"
         };
 
+        const WLGSymbol = {
+          type: "simple-line",
+          color: [255, 255, 0, 0.75],
+          width: 4,
+          cap: "round",
+          join: "round"
+        };
+
+        const WLCGSymbol = {
+          type: "simple-line",
+          color: [0, 191, 255, 0.75],
+          width: 4,
+          cap: "round",
+          join: "round"
+        };
+
+        const CISymbol = {
+          type: "simple-line",
+          color: [64, 64, 64, 0.75],
+          width: 4,
+          cap: "round",
+          join: "round"
+        };
+        
         const WLRenderer = {
-          type: "simple",
-          symbol: WLSymbol
+          type: "unique-value",
+          field: "Material_",
+          uniqueValueInfos: [
+            {
+              value: "PVC",
+              symbol: WLSymbol
+            },
+            {
+              value: "PVC - GTUA 24 Inch Transmission Line", // Customize this based on the actual value for open status
+              symbol: WLGSymbol
+            },
+            {
+              value: "PVC - City Maintained GTUA Line",
+              symbol: WLCGSymbol
+            },
+            {
+              value: "Cast Iron",
+              symbol: CISymbol
+            }
+          ]
         };
         
         const WLLayer = new FeatureLayer({
@@ -455,7 +497,9 @@
       
       let highlight;
       const infoDiv = document.getElementById('infoDiv');
-
+      var valveStatus = graphic.attributes.ValveStatus || 'N/A';
+      var valveColor = valveStatus === 'open' ? 'green' : valveStatus === 'closed' ? 'red' : 'black';
+        
       function eventHandler(event) {
         const screenPoint = {
           include: [FMLayer, LSLayer, WTPLayer, PSLayer, WELayer, WSTLayer, SLLayer, WLLayer, MHLayer, WVLayer, FHLayer]
@@ -598,7 +642,7 @@
               highlight = layerView.highlight(graphic);
               infoDiv.innerHTML = 
                 "<b span style='font-size: 1.1em;'>Water Valve</span></b><br><br>" +
-                "Status: <b>" + (graphic.attributes.ValveStatus || 'N/A') + "</b><br>" +
+                "Status: <b style='color: " + valveColor + ";'>" + valveStatus + "</b><br>" +
                 "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === FHLayer) {
               layerView = FHLayerView;
