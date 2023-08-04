@@ -378,8 +378,8 @@
         const defaultValveSymbol = {
           type: "picture-marker",  // autocasts as new PictureMarkerSymbol()
           url: "https://i.imgur.com/lqaanyP.png",
-          width: "22px",
-          height: "22px"
+          width: "23px",
+          height: "23px"
         };
 
         const valveRenderer = {
@@ -413,9 +413,9 @@
 
         const fhSymbol = {
           type: "picture-marker",  // autocasts as new PictureMarkerSymbol()
-          url: "https://i.imgur.com/AE2q3nv.png",
-          width: "35px",
-          height: "35px"
+          url: "https://i.imgur.com/A5Z5b3r.png",
+          width: "36px",
+          height: "36px"
         };
 
         const fhRenderer = {
@@ -554,7 +554,7 @@
                 "Diameter (Inches): <b>" + (graphic.attributes.Diameter || 'N/A') + "</b><br>" +
                 "Material: <b>" + (graphic.attributes.Material || 'N/A') + "</b><br>" +
                 "Year Installed: <b>" + (graphic.attributes.Year_Built || 'N/A') + "</b><br>" +
-                "Asset ID: <b style='color: slategrey;'>" + graphic.attributes.AssetID + "</b>";
+                "Asset ID: <b style='color: black;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === LSLayer) {
               layerView = LSLayerView;
               currentLSID = featureID;
@@ -563,7 +563,7 @@
                 "<b span style='font-size: 1.1em;'>Lift Station</span></b><br><br>" +
                 "Status: <b>" + (graphic.attributes.Future_Existing || 'N/A') + "</b><br>" +
                 "Facility Name: <b>" + (graphic.attributes.Facility_Name || 'N/A') + "</b><br>" +
-                "Asset ID: <b style='color: slategrey;'>" + graphic.attributes.AssetID + "</b>";
+                "Asset ID: <b style='color: black;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === WTPLayer) {
               layerView = WTPLayerView;
               currentWTPID = featureID;
@@ -572,7 +572,7 @@
                 "<b span style='font-size: 1.1em;'>Wastewater Treatment Plant</span></b><br><br>" +
                 "Facility Name: <b>" + (graphic.attributes.Facility_Name || 'N/A') + "</b><br>" +
                 "Capacity: <b>" + (graphic.attributes.Capacity || 'N/A') + "</b><br>" +
-                "Asset ID: <b style='color: slategrey;'>" + graphic.attributes.AssetID + "</b>";
+                "Asset ID: <b style='color: black;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === PSLayer) {
               layerView = PSLayerView;
               currentPSID = featureID;
@@ -582,7 +582,7 @@
                 "Status: <b>" + (graphic.attributes.Layer || 'N/A') + "</b><br>" +
                 "Facility Name: <b>" + (graphic.attributes.Station_Name || 'N/A') + "</b><br>" +
                 "Pump Identifier: <b>" + (graphic.attributes.Pump_Identifier || 'N/A') + "</b><br>" +
-                "Asset ID: <b style='color: slategrey;'>" + graphic.attributes.AssetID + "</b>";
+                "Asset ID: <b style='color: black;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === WELayer) {
               layerView = WELayerView;
               currentWEID = featureID;
@@ -590,7 +590,7 @@
               infoDiv.innerHTML = 
                 "<b span style='font-size: 1.1em;'>Well</span></b><br><br>" +
                 "Well Name: <b>" + (graphic.attributes.Well_Identifier || 'N/A') + "</b><br>" +
-                "Asset ID: <b style='color: slategrey;'>" + graphic.attributes.AssetID + "</b>";
+                "Asset ID: <b style='color: black;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === WSTLayer) {
               layerView = WSTLayerView;
               currentWSTID = featureID;
@@ -598,7 +598,7 @@
                 "<b span style='font-size: 1.1em;'>Water Storage Tank</span></b><br><br>" +
                 "Status: <b>" + (graphic.attributes.Layer || 'N/A') + "</b><br>" +
                 "Tank Identifier: <b>" + (graphic.attributes.Tank_Identifier || 'N/A') + "</b><br>" +
-                "Asset ID: <b style='color: slategrey;'>" + graphic.attributes.AssetID + "</b>";
+                "Asset ID: <b style='color: black;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === SLLayer) {
               layerView = SLLayerView;
               currentSLID = featureID;
@@ -610,7 +610,7 @@
                 "Year Installed: <b>" + (graphic.attributes.Year_Built || 'N/A') + "</b><br>" +
                 "Upstream Invert Elevation: <b>" + (graphic.attributes.FROM_INV || 'N/A') + "</b><br>" +
                 "Downstream Invert Elevation: <b>" + (graphic.attributes.TO_INV || 'N/A') + "</b><br>" +
-                "Asset ID: <b style='color: slategrey;'>" + graphic.attributes.AssetID + "</b>";
+                "Asset ID: <b style='color: black;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === WLLayer) {
               layerView = WLLayerView;
               currentWLID = featureID;
@@ -620,7 +620,7 @@
                 "Diameter (Inches): <b>" + (graphic.attributes.Diameter_Inches || 'N/A') + "</b><br>" +
                 "Material: <b>" + (graphic.attributes.Material_ || 'N/A') + "</b><br>" +
                 "Year Installed: <b>" + (graphic.attributes.Year_ || 'N/A') + "</b><br>" +
-                "Asset ID: <b style='color: slategrey;'>" + graphic.attributes.AssetID + "</b>";
+                "Asset ID: <b style='color: black;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === MHLayer) {
               layerView = MHLayerView;
               currentMHID = featureID;
@@ -633,7 +633,7 @@
                 "Manhole Material: <b>" + (graphic.attributes.MH_Material || 'N/A') + "</b><br>" +
                 "Drop Connection?: <b>" + (graphic.attributes.Drop_Connection || 'N/A') + "</b><br>" +
                 "Location Type: <b>" + (graphic.attributes.Location_Type || 'N/A') + "</b><br>" +
-                "Asset ID: <b style='color: slategrey;'>" + graphic.attributes.AssetID + "</b>";
+                "Asset ID: <b style='color: black;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === WVLayer) {
               var valveStatus = graphic.attributes.ValveStatus || 'N/A';
               var valveColor = valveStatus === 'Open' ? 'green' : valveStatus === 'Closed' ? 'red' : 'black';
@@ -643,7 +643,7 @@
               infoDiv.innerHTML = 
                 "<b span style='font-size: 1.1em;'>Water Valve</span></b><br><br>" +
                 "Status: <b style='color: " + valveColor + ";'>" + valveStatus + "</b><br>" +
-                "Asset ID: <b style='color: slategrey;'>" + graphic.attributes.AssetID + "</b>";
+                "Asset ID: <b style='color: black;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === FHLayer) {
               layerView = FHLayerView;
               currentFHID = featureID;
@@ -654,7 +654,7 @@
                 "Location: <b>" + (graphic.attributes.Location || 'N/A') + "</b><br>" +
                 "District: <b>" + (graphic.attributes.District || 'N/A') + "</b><br>" +
                 "Year Installed: <b>" + (graphic.attributes.Year_ || 'N/A') + "</b><br>" +
-                "Asset ID: <b style='color: slategrey;'>" + graphic.attributes.AssetID + "</b>";
+                "Asset ID: <b style='color: black;'>" + graphic.attributes.AssetID + "</b>";
             }
 
             if (layerView) {
