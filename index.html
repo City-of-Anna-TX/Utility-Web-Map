@@ -151,7 +151,7 @@
 
         const FMSymbol = {
           type: "simple-line",
-          color: [255, 165, 0, 0.75],
+          color: [255, 165, 0, 0.8],
           width: 4,
           cap: "round",
           join: "round"
@@ -243,7 +243,7 @@
 
         const SLSymbol = {
           type: "simple-line",
-          color: [124, 252, 0, 0.75],
+          color: [124, 252, 0, 0.8],
           width: 4,
           cap: "round",
           join: "round",
@@ -275,7 +275,7 @@
 
         const WLSymbol = {
           type: "simple-line",
-          color: [51, 51, 255, 0.75],
+          color: [51, 51, 255, 0.8],
           width: 4,
           cap: "round",
           join: "round"
@@ -283,7 +283,7 @@
 
         const WLGSymbol = {
           type: "simple-line",
-          color: [255, 255, 0, 0.75],
+          color: [255, 255, 0, 0.8],
           width: 4,
           cap: "round",
           join: "round"
@@ -291,7 +291,7 @@
 
         const WLCGSymbol = {
           type: "simple-line",
-          color: [0, 191, 255, 0.75],
+          color: [0, 191, 255, 0.8],
           width: 4,
           cap: "round",
           join: "round"
@@ -299,7 +299,7 @@
 
         const CISymbol = {
           type: "simple-line",
-          color: [64, 64, 64, 0.75],
+          color: [160, 82, 45, 0.8],
           width: 4,
           cap: "round",
           join: "round"
@@ -497,8 +497,6 @@
       
       let highlight;
       const infoDiv = document.getElementById('infoDiv');
-      var valveStatus = graphic.attributes.ValveStatus || 'N/A';
-      var valveColor = valveStatus === 'open' ? 'green' : valveStatus === 'closed' ? 'red' : 'black';
         
       function eventHandler(event) {
         const screenPoint = {
@@ -637,6 +635,8 @@
                 "Location Type: <b>" + (graphic.attributes.Location_Type || 'N/A') + "</b><br>" +
                 "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === WVLayer) {
+              var valveStatus = graphic.attributes.ValveStatus || 'N/A';
+              var valveColor = valveStatus === 'open' ? 'green' : valveStatus === 'closed' ? 'red' : 'black';
               layerView = WVLayerView;
               currentWVID = featureID;
               highlight = layerView.highlight(graphic);
