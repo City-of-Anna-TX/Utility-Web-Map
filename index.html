@@ -152,18 +152,16 @@
           copyright: "Nearmap",
           tileInfo: tileInfo,
           opacity: opacity,
-          blendMode: blend_mode,
+          blendMode: blend_mode
       });
 
       const map = new Map({
           basemap: "topo-vector",
-          ground: "world-elevation",
+          ground: "world-elevation"
       });
       //const map = new WebMap({
         //basemap: "arcgis-imagery",
       //});
-      
-      map.add(nearmap_wt1);
       
       const view = new MapView({
         container: "viewDiv",
@@ -175,6 +173,8 @@
           color: [50, 50, 50]
         }
       });
+
+      map.add(nearmap_wt1);
       
       let currentFMID = null;
       let currentLSID = null;
