@@ -109,7 +109,7 @@
       esriId.registerOAuthInfos([info]);
       
       const map = new WebMap({
-        basemap: "arcgis-imagery",
+        basemap: "hybrid",
       });
       
       const view = new MapView({
@@ -247,11 +247,11 @@
           width: 3,
           cap: "square",
           join: "round",
-          marker: { // autocasts from LineSymbolMarker
-            style: "arrow",
-            color: [124, 252, 0],
-            placement: "begin"
-          }
+          //marker: { // autocasts from LineSymbolMarker
+            //style: "arrow",
+            //color: [124, 252, 0],
+            //placement: "begin"
+          //}
         };
 
         const SLRenderer = {
@@ -464,7 +464,7 @@
         infoDiv.style.top = `${event.y + 10}px`;
         infoDiv.style.left = `${event.x + 10}px`;
 
-        view.hitTest(event, screenPoint).then(function(response) {
+        view.hitTest(event, screenPoint { tolerance: 2}).then(function(response) {
           if (response.results.length > 0) {
             const graphic = response.results[0].graphic;
             const featureID = graphic.attributes.AssetID;  // Use the AssetID attribute
