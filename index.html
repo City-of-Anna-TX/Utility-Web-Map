@@ -50,7 +50,7 @@
       "esri/renderers/SimpleRenderer",
       "esri/renderers/UniqueValueRenderer",
       "esri/symbols/PictureMarkerSymbol",
-       "esri/symbols/SimpleLineSymbol",
+      "esri/symbols/SimpleLineSymbol",
       "esri/symbols/LineSymbolMarker",
       "esri/widgets/Legend",
       "esri/widgets/Expand",
@@ -413,9 +413,9 @@
 
         const fhSymbol = {
           type: "picture-marker",  // autocasts as new PictureMarkerSymbol()
-          url: "https://i.imgur.com/oS7gP9H.png",
-          width: "35px",
-          height: "35px"
+          url: "https://i.imgur.com/MoHSDWm.png",
+          width: "25px",
+          height: "25px"
         };
 
         const fhRenderer = {
@@ -636,7 +636,7 @@
                 "Asset ID: <b style='color: dodgerblue;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === WVLayer) {
               var valveStatus = graphic.attributes.ValveStatus || 'N/A';
-              var valveColor = valveStatus === 'open' ? 'green' : valveStatus === 'closed' ? 'red' : 'black';
+              var valveColor = valveStatus === 'Open' ? 'green' : valveStatus === 'Closed' ? 'red' : 'black';
               layerView = WVLayerView;
               currentWVID = featureID;
               highlight = layerView.highlight(graphic);
