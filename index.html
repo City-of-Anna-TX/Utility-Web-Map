@@ -294,7 +294,12 @@
           color: [124, 252, 0, 0.9],
           width: 3,
           cap: "square",
-          join: "round"
+          join: "round",
+          marker: { // autocasts from LineSymbolMarker
+            style: "arrow",
+            color: "green",
+            placement: "begin-end"
+          }
         };
 
         const SLRenderer = {
