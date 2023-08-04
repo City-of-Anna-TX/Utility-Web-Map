@@ -99,52 +99,52 @@
       FormTemplate,
       FieldElement
     ) {
-      //const api_key = "NTA2ZGIwNWEtMjhmYi00ZTY5LWJhN2QtN2IxZDNmOWMyY2E2"
-      //const direction = 'Vert'; // Options: 'Vert', 'North', // Note: awaiting fix from esri to support E, W, S
-      //const origin = [-96.5482347, 33.3487803];  // [Lat, Lon] for Location: ex: Austin, TX
-      //const origin_zoom = 8;  // Starting Zoom level for the Web Map
-      //let nearmap_min_zoom = 8;  // Nearmap Imagery Lowest resolution zoom level the user can view
-      //const nearmap_max_zoom = 24;  // Nearmap Imagery Highest resolution zoom level the user can view
-      //const opacity = 1.0; // Range of 0.1 to 1.0
-      //const blend_mode = null;
+      const api_key = "NTA2ZGIwNWEtMjhmYi00ZTY5LWJhN2QtN2IxZDNmOWMyY2E2"
+      const direction = 'Vert'; // Options: 'Vert', 'North', // Note: awaiting fix from esri to support E, W, S
+      const origin = [-96.5482347, 33.3487803];  // [Lat, Lon] for Location: ex: Austin, TX
+      const origin_zoom = 8;  // Starting Zoom level for the Web Map
+      let nearmap_min_zoom = 8;  // Nearmap Imagery Lowest resolution zoom level the user can view
+      const nearmap_max_zoom = 24;  // Nearmap Imagery Highest resolution zoom level the user can view
+      const opacity = 1.0; // Range of 0.1 to 1.0
+      const blend_mode = null;
       
-      //let lods = [];
-      //const tilesize = 256;
-      //const earthCircumference = 40075016.685568;
-      //const inchesPerMeter = 39.37;
-      //const initialResolution = earthCircumference / tilesize;
-      //for (let zoom = nearmap_min_zoom; zoom <= nearmap_max_zoom; zoom++) {
-          //let resolution = initialResolution / Math.pow(2, zoom);
-          //let scale = resolution * 96 * inchesPerMeter;
-          //lods.push(new LOD({
-              //level: zoom,
-              //scale: scale,
-              //resolution: resolution
-          //}));
-      //}
+      let lods = [];
+      const tilesize = 256;
+      const earthCircumference = 40075016.685568;
+      const inchesPerMeter = 39.37;
+      const initialResolution = earthCircumference / tilesize;
+      for (let zoom = nearmap_min_zoom; zoom <= nearmap_max_zoom; zoom++) {
+          let resolution = initialResolution / Math.pow(2, zoom);
+          let scale = resolution * 96 * inchesPerMeter;
+          lods.push(new LOD({
+              level: zoom,
+              scale: scale,
+              resolution: resolution
+          }));
+      }
 
-      //const tileInfo = new TileInfo({
-          //cols: 256,
-          //dpi: 72,
-          //format: "jpg",
-          //height: 256,
-          //lods: lods,
-          //origin: new Point({
-              //x: -20037508.342787,
-              //y: 20037508.342787
-          //}),
-          //rows: 256,
-          //spatialReference: SpatialReference.WebMercator,
-          //width: 256
-      //});
+      const tileInfo = new TileInfo({
+          cols: 256,
+          dpi: 72,
+          format: "jpg",
+          height: 256,
+          lods: lods,
+          origin: new Point({
+              x: -20037508.342787,
+              y: 20037508.342787
+          }),
+          rows: 256,
+          spatialReference: SpatialReference.WebMercator,
+          width: 256
+      });
       
-      //const nearmap_wtl = new WebTileLayer({
-          //urlTemplate: `https://api.nearmap.com/tiles/v3/${direction}/{level}/{col}/{row}.img?apikey=${api_key}`,
-          //copyright: "Nearmap",
-          //tileInfo: tileInfo,
-          //opacity: opacity,
-          //blendMode: blend_mode,
-      //});
+      const nearmap_wtl = new WebTileLayer({
+          urlTemplate: `https://api.nearmap.com/tiles/v3/${direction}/{level}/{col}/{row}.img?apikey=${api_key}`,
+          copyright: "Nearmap",
+          tileInfo: tileInfo,
+          opacity: opacity,
+          blendMode: blend_mode,
+      });
       
       const info = new OAuthInfo({
         appId: "ZEMj4kGM6WypPkO1",
@@ -154,9 +154,9 @@
 
       esriId.registerOAuthInfos([info]);
       
-      const map = new WebMap({
-        basemap: "arcgis-imagery",
-      });
+      //const map = new WebMap({
+        //basemap: "arcgis-imagery",
+      //});
 
       const view = new MapView({
         container: "viewDiv",
@@ -169,7 +169,7 @@
         }
       });
 
-      //map.add(nearmap_wt1);
+      map.add(nearmap_wt1);
       
       let currentFMID = null;
       let currentLSID = null;
@@ -295,11 +295,11 @@
           width: 3,
           cap: "square",
           join: "round",
-          //marker: { // autocasts from LineSymbolMarker
-            //style: "arrow",
-            //color: "green",
-            //placement: "begin-end"
-          //}
+          marker: { // autocasts from LineSymbolMarker
+            style: "arrow",
+            color: [124, 252, 0],
+            placement: "begin"
+          }
         };
 
         const SLRenderer = {
