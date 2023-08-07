@@ -605,7 +605,7 @@
               highlight = layerView.highlight(graphic); 
               infoDiv.innerHTML = 
                 "<b span style='font-size: 1.1em;'>Sewer Line</span></b><br><br>" +
-                "Diameter (Inches): <b>" + (graphic.attributes.Diameter_ || 'N/A') + "</b><br>" +
+                "Diameter: <b>" + (graphic.attributes.Diameter_ || 'N/A') + '"</b><br>' +
                 "Material: <b>" + (graphic.attributes.Material_ || 'N/A') + "</b><br>" +
                 "Year Installed: <b>" + (graphic.attributes.Year_Built || 'N/A') + "</b><br>" +
                 "Upstream Invert Elevation: <b>" + (graphic.attributes.FROM_INV || 'N/A') + "</b><br>" +
@@ -617,7 +617,7 @@
               highlight = layerView.highlight(graphic); 
               infoDiv.innerHTML = 
                 "<b span style='font-size: 1.1em;'>Water Line</span></b><br><br>" +
-                "Diameter (Inches): <b>" + (graphic.attributes.Diameter_Inches || 'N/A') + "</b><br>" +
+                "Diameter: <b>" + (graphic.attributes.Diameter_Inches || 'N/A') + '"</b><br>' +
                 "Material: <b>" + (graphic.attributes.Material_ || 'N/A') + "</b><br>" +
                 "Year Installed: <b>" + (graphic.attributes.Year_ || 'N/A') + "</b><br>" +
                 "Asset ID: <b style='color: black;'>" + graphic.attributes.AssetID + "</b>";
@@ -628,8 +628,8 @@
               infoDiv.innerHTML = 
                 "<b span style='font-size: 1.1em;'>Manhole</span></b><br><br>" +
                 "Notes: <b>" + (graphic.attributes.Notes || 'N/A') + "</b><br>" +
-                "Rim Elevation: <b>" + (graphic.attributes.Rim_Elevat || 'N/A') + "</b><br>" +
-                "Manhole Size (Inches): <b>" + (graphic.attributes.MH_Size || 'N/A') + "</b><br>" +
+                "Rim Elevation: <b>" + (graphic.attributes.Rim_Elevat || 'N/A') + "'</b><br>" +
+                "Manhole Size: <b>" + (graphic.attributes.MH_Size ? (graphic.attributes.MH_Size / 12) + "'" : 'N/A') + "</b><br>" +
                 "Manhole Material: <b>" + (graphic.attributes.MH_Material || 'N/A') + "</b><br>" +
                 "Drop Connection?: <b>" + (graphic.attributes.Drop_Connection || 'N/A') + "</b><br>" +
                 "Location Type: <b>" + (graphic.attributes.Location_Type || 'N/A') + "</b><br>" +
