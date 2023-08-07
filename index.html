@@ -506,7 +506,7 @@
         infoDiv.style.top = `${event.y + 10}px`;
         infoDiv.style.left = `${event.x + 10}px`;
 
-        view.hitTest(event, screenPoint).then(function(response) {
+        view.hitTest(event, screenPoint, {tolerance: 1}).then(function(response) {
           if (response.results.length > 0) {
             const graphic = response.results[0].graphic;
             const featureID = graphic.attributes.AssetID;  // Use the AssetID attribute
@@ -608,8 +608,8 @@
                 "Diameter: <b>" + (graphic.attributes.Diameter_ || 'N/A') + '"</b><br>' +
                 "Material: <b>" + (graphic.attributes.Material_ || 'N/A') + "</b><br>" +
                 "Year Installed: <b>" + (graphic.attributes.Year_Built || 'N/A') + "</b><br>" +
-                "Upstream Invert Elevation: <b>" + (graphic.attributes.FROM_INV || 'N/A') + "</b><br>" +
-                "Downstream Invert Elevation: <b>" + (graphic.attributes.TO_INV || 'N/A') + "</b><br>" +
+                "Upstream Invert Elevation: <b>" + (graphic.attributes.FROM_INV || 'N/A') + "'</b><br>" +
+                "Downstream Invert Elevation: <b>" + (graphic.attributes.TO_INV || 'N/A') + "'</b><br>" +
                 "Asset ID: <b style='color: black;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === WLLayer) {
               layerView = WLLayerView;
