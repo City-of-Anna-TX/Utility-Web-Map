@@ -368,31 +368,31 @@
           MHLayerView = layerView;
         });
 
-        const closedValveSymbol = {
-          type: "picture-marker",  // autocasts as new PictureMarkerSymbol()
-          url: "https://i.imgur.com/GHImIij.png",
-          width: "24px",
-          height: "24px"
-        };
-
         const defaultValveSymbol = {
           type: "picture-marker",  // autocasts as new PictureMarkerSymbol()
           url: "https://i.imgur.com/lqaanyP.png",
           width: "24px",
           height: "24px"
         };
+        
+        const closedValveSymbol = {
+          type: "picture-marker",  // autocasts as new PictureMarkerSymbol()
+          url: "https://i.imgur.com/GHImIij.png",
+          width: "24px",
+          height: "24px"
+        };        
 
         const valveRenderer = {
           type: "unique-value",
           field: "ValveStatus",
           uniqueValueInfos: [
             {
-              value: "Closed",
-              symbol: closedValveSymbol
-            },
-            {
               value: "Open", // Customize this based on the actual value for open status
               symbol: defaultValveSymbol
+            },
+            {
+              value: "Closed",
+              symbol: closedValveSymbol
             }
           ]
         };
