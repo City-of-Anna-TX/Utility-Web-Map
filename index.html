@@ -33,7 +33,6 @@
   <script>
     require([
       "esri/widgets/LayerList",
-      "esri/layers/VectorTileLayer",
       "esri/layers/WebTileLayer",
       "esri/layers/WMSLayer",
       "esri/Map",
@@ -69,8 +68,6 @@
       "dojo/domReady!"
     ], function (
       LayerList,
-      BasemapLayerList,
-      VectorTileLayer,
       WebTileLayer,
       WMSLayer,
       Map,
@@ -112,13 +109,9 @@
       });
 
       esriId.registerOAuthInfos([info]);
-
-      const customBasemap = new VectorTileLayer({
-        url: "https://basemapstyles-api.arcgis.com/arcgis/rest/services/styles/v2/styles/arcgis/human-geography-dark/labels"
-      });
       
       const map = new WebMap({
-        basemap: customBasemap
+        basemap: "arcgis-imagery",
       });
       
       const view = new MapView({
@@ -160,7 +153,6 @@
 
         const Nearmap = new WMSLayer({
           url: "https://api.nearmap.com/wms/v1/latest/apikey/MTM2OTBlMGQtOWQ2Yi00ZWY5LTk4M2ItNGY2ZmMyYTA0NDc4?service=WMS&request=GetCapabilities",
-          listMode: "hide"
         });
 
         map.add(Nearmap);
@@ -700,26 +692,15 @@
       }
     });
 
-      view.ui.add(
-        [
-          new Expand({
-            view: view,
-            content: new Search({ view: view })
-          }),
-        ],
-        "top-right"
-      );
-
-      view.ui.add(
+        view.ui.add(
           [
             new Expand({
               view: view,
-              content: new BasemapLayerList({ view: view }),
-              expanded: false
+              content: new Search({ view: view })
             }),
           ],
-          "bottom-right"  
-        ); 
+          "top-right"
+        );
       
         view.ui.add(
           [
