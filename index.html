@@ -109,10 +109,19 @@
       });
 
       esriId.registerOAuthInfos([info]);
+
+      const mapBaseLayer = new VectorTileLayer({
+        url: "https://basemapstyles-api.arcgis.com/arcgis/rest/services/styles/v2/webmaps/arcgis/dark-gray/labels"
+      });
+
+      const customBasemap = new Basemap({
+        baseLayers: [mapBaseLayer],
+        title: "Reference"
+      });
       
-      //const map = new WebMap({
-        //basemap: "arcgis-imagery",
-      //});
+      const map = new WebMap({
+        basemap: customBasemap,
+      });
       
       const view = new MapView({
         container: "viewDiv",
