@@ -34,7 +34,6 @@
     require([
       "esri/widgets/LayerList",
       "esri/layers/WebTileLayer",
-      "esri/layers/VectorTileLayer",
       "esri/layers/WMSLayer",
       "esri/Map",
       "esri/Basemap",
@@ -70,7 +69,6 @@
     ], function (
       LayerList,
       WebTileLayer,
-      VectorTileLayer,
       WMSLayer,
       Map,
       Basemap,
@@ -111,18 +109,9 @@
       });
 
       esriId.registerOAuthInfos([info]);
-
-      const mapBaseLayer = new VectorTileLayer({
-        url: "https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer"
-      });
-
-      const customBasemap = new Basemap({
-        baseLayers: [mapBaseLayer],
-        title: "Reference"
-      });
       
       const map = new WebMap({
-        basemap: customBasemap,
+        basemap: "arcgis-imagery",
       });
       
       const view = new MapView({
