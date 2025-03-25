@@ -34,6 +34,7 @@
     require([
       "esri/widgets/LayerList",
       "esri/layers/WebTileLayer",
+      "esri/layers/WMSLayer",
       "esri/Map",
       "esri/Basemap",
       "esri/layers/support/TileInfo",
@@ -68,6 +69,7 @@
     ], function (
       LayerList,
       WebTileLayer,
+      WMSLayer,
       Map,
       Basemap,
       TileInfo,
@@ -149,6 +151,12 @@
       
       view.when().then(function () {  
 
+        const Nearmap = new WMSLayer({
+          url: "https://api.nearmap.com/wms/v1/latest/apikey/MTM2OTBlMGQtOWQ2Yi00ZWY5LTk4M2ItNGY2ZmMyYTA0NDc4?service=WMS&request=GetCapabilities",
+        });
+
+        map.add(Nearmap);
+        
         const FMSymbol = {
           type: "simple-line",
           color: [255, 165, 0, 0.8],
@@ -620,6 +628,7 @@
                 "Diameter: <b>" + (graphic.attributes.Diameter_Inches || 'N/A') + '"</b><br>' +
                 "Material: <b>" + (graphic.attributes.Material_ || 'N/A') + "</b><br>" +
                 "Year Installed: <b>" + (graphic.attributes.Year_ || 'N/A') + "</b><br>" +
+                "Notes: <b>" + (graphic.attributes.Notes || 'N/A') + "</b><br>" +
                 "Asset ID: <b style='color: black;'>" + graphic.attributes.AssetID + "</b>";
             } else if (graphic.layer === MHLayer) {
               layerView = MHLayerView;
