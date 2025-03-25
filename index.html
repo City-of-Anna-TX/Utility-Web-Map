@@ -33,7 +33,7 @@
   <script>
     require([
       "esri/widgets/LayerList",
-      "esri/widgets/BasemapLayerList",
+      "esri/layers/VectorTileLayer",
       "esri/layers/WebTileLayer",
       "esri/layers/WMSLayer",
       "esri/Map",
@@ -70,6 +70,7 @@
     ], function (
       LayerList,
       BasemapLayerList,
+      VectorTileLayer,
       WebTileLayer,
       WMSLayer,
       Map,
@@ -111,9 +112,13 @@
       });
 
       esriId.registerOAuthInfos([info]);
+
+      const customBasemap = new VectorTileLayer({
+        url: "https://basemapstyles-api.arcgis.com/arcgis/rest/services/styles/v2/styles/arcgis/human-geography-dark/labels"
+      });
       
       const map = new WebMap({
-        basemap: "arcgis-imagery",
+        basemap: customBasemap,
       });
       
       const view = new MapView({
