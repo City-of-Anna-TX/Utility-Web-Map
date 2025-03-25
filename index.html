@@ -33,6 +33,7 @@
   <script>
     require([
       "esri/widgets/LayerList",
+      "esri/widgets/BasemapLayerList",
       "esri/layers/WebTileLayer",
       "esri/layers/WMSLayer",
       "esri/Map",
@@ -68,6 +69,7 @@
       "dojo/domReady!"
     ], function (
       LayerList,
+      BasemapLayerList,
       WebTileLayer,
       WMSLayer,
       Map,
@@ -153,6 +155,7 @@
 
         const Nearmap = new WMSLayer({
           url: "https://api.nearmap.com/wms/v1/latest/apikey/MTM2OTBlMGQtOWQ2Yi00ZWY5LTk4M2ItNGY2ZmMyYTA0NDc4?service=WMS&request=GetCapabilities",
+          listMode: "hide"
         });
 
         map.add(Nearmap);
@@ -692,15 +695,26 @@
       }
     });
 
-        view.ui.add(
+      view.ui.add(
+        [
+          new Expand({
+            view: view,
+            content: new Search({ view: view })
+          }),
+        ],
+        "top-right"
+      );
+
+      view.ui.add(
           [
             new Expand({
               view: view,
-              content: new Search({ view: view })
+              content: new BasemapLayerList({ view: view }),
+              expanded: false
             }),
           ],
-          "top-right"
-        );
+          "bottom-right"  
+        ); 
       
         view.ui.add(
           [
