@@ -467,7 +467,9 @@
 
         const editor = new Editor({
           view: view,
-          allowedWorkflows: ["update"],
+          snappingOptions: {
+            enabled: false
+          }
           layerInfos: [
             {
             layer: WVLayer,
@@ -480,7 +482,14 @@
                 }
               ]
             },
-            deleteEnabled: false
+            enabled: true, // Default is true, set to false to disable editing functionality.
+            addEnabled: false, // Default is true, set to false to disable the ability to add a new feature.
+            updateEnabled: true, // Default is true, set to false to disable the ability to edit an existing feature.
+            deleteEnabled: false, // Default is true, set to false to disable the ability to delete features.
+            attributeUpdatesEnabled: true, // Default is true, set to false to disable the ability to edit attributes in the update workflow.
+            geometryUpdatesEnabled: false, // Default is true, set to false to disable the ability to edit feature geometries in the update workflow.
+            attachmentsOnCreateEnabled: false, //Default is true, set to false to disable the ability to work with attachments while creating features.
+            attachmentsOnUpdateEnabled: false
            }
           ]
         });
